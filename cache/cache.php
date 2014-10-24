@@ -1,11 +1,11 @@
 <?
 
-class cache
+abstract class cache
 {
 
-    private $available;
+    static private $available;
 
-    private $memcache;
+    static private $memcache;
 
     const HOST = '127.0.0.1';
 
@@ -13,65 +13,82 @@ class cache
 
     const COMPRESS = MEMCACHE_COMPRESSED;
 
-    public function __construct()
+    static private function stampIndex( $index )
+    {
+        return static::$path . $index;
+    }
+
+    static public function activate()
     {
 
-        $this->memcache = new Memcache();
-
-        $this->memcache->connect( self::HOST, self::PORT );
-
-        $stats = $this->memcache->getExtendedStats();
-
-        $this->available = false;
-        foreach( $stats as $server )
+        if( empty( self::$available ) && self::$available !== false )
         {
-            if( $server )
+
+            self::$memcache = new Memcache();
+
+            self::$memcache->connect( self::HOST, self::PORT );
+
+            self::$memcache->getExtendedStats();
+
+            self::$available = false;
+
+            foreach( $stats as $server )
             {
-                $this->available = true;
+                if( $server )
+                {
+                    self::$available = true;
+                }
             }
+
         }
 
     }
 
-    public function save( $index, $data, $duration=600 )
+    static public function save( $index, $data, $duration=600 )
     {
 
-        if( ! $this->available )
+        if( ! self::$available )
         {
             return false;
         }
 
-        return $this->memcache->set( $index, $data, self::COMPRESS, $duration);
+        $index = self::stampIndex( $index );
+
+        return self::$memcache->set( $index, $data, self::COMPRESS, $duration);
 
     }
 
-    public function retrieve( $index )
+    static public function retrieve( $index )
     {
 
-        if( ! $this->available )
+        if( ! self::$available )
         {
             return false;
         }
 
-        return $this->memcache->get( $index, self::COMPRESS );
+        $index = self::stampIndex( $index );
+
+        return self::$memcache->get( $index, self::COMPRESS );
 
     }
 
-    public function clear( $index )
+    static public function clear( $index )
     {
 
-        if( ! $this->available )
+        if( ! self::$available )
         {
             return false;
         }
 
-        return $this->memcache->delete( $index );
+        $index = self::stampIndex( $index );
+
+        return self::$memcache->delete( $index );
 
     }
 
-    public function flush()
+    static public function flush()
     {
-        $this->memcache->flush();
+        self::$memcache->flush();
     }
 
 }

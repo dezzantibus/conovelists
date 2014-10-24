@@ -1,6 +1,6 @@
 <?php
 
-abstract class layout
+abstract class layout_page
 {
 
     private $children;
@@ -15,11 +15,18 @@ abstract class layout
     private function renderTop()
     {
 
+        echo '<!DOCTYPE html>',
+                '<html>',
+                    '<head>',
+                        '<title></title>',
+                    '</head>',
+                    '<body>';
+
     }
 
     private function renderBottom()
     {
-
+        echo '</body></html>';
     }
 
     private function renderChildren()
