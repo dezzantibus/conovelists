@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on  
+	RewriteRule ^apibroker/(.*)/(.*)/(.*)/(.*)/$ index.php?path=$1/$2/$3/$4 [QSA,L]
+	RewriteRule ^apibroker/(.*)/(.*)/(.*)/$ domains.php?path=$1/$2/$3 [QSA,L]
+	RewriteRule ^apibroker/(.*)/(.*)/$ domains.php?path=$1/$2 [QSA,L]
+</IfModule>
