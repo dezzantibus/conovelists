@@ -1,7 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zante
- * Date: 24/10/2014
- * Time: 11:27
- */ 
+
+require_once __DIR__ . '/tools/class_finder.php';
+
+spl_autoload_register( 'class_finder::getClassFile' );
