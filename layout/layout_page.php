@@ -1,16 +1,11 @@
 <?php
 
-abstract class layout_page
+abstract class layout_page extends layout
 {
 
-    private $children;
+    protected $title;
 
-    public function addChild( $child )
-    {
-
-        $this->children[] = $child;
-
-    }
+    protected $description;
 
     private function renderTop()
     {
@@ -18,7 +13,8 @@ abstract class layout_page
         echo '<!DOCTYPE html>',
                 '<html>',
                     '<head>',
-                        '<title></title>',
+                        '<title>', $this->title, '</title>',
+                        '<meta name="description" content="', $this->description, '">',
                     '</head>',
                     '<body>';
 
@@ -27,24 +23,6 @@ abstract class layout_page
     private function renderBottom()
     {
         echo '</body></html>';
-    }
-
-    private function renderChildren()
-    {
-
-        /** @var $child layout */
-        foreach( $this->children as $child )
-        {
-            $child->render();
-        }
-
-    }
-
-    public function render()
-    {
-        $this->renderTop();
-        $this->renderChildren();
-        $this->renderBottom();
     }
 
 }

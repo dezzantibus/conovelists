@@ -5,7 +5,7 @@ abstract class layout
 
     private $children;
 
-    public function addChild( $child )
+    public function addChild( layout $child )
     {
 
         $this->children[] = $child;

@@ -1,6 +1,7 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine on  
-	RewriteRule ^(.*).html$ index.php?handler=category&route=$1 [QSA,L]
+	RewriteRule ^about/(.*).html$ index.php?handler=$1 [QSA,L]
 	RewriteRule ^(0-9a-z)-(0-9a-z)/(.*)/(.*)/(.*).html$ index.php?handler=story&story_id=$1&chapter_id=$2 [QSA,L]
 	RewriteRule ^(0-9a-z)/(.*)/(.*).html$ index.php?handler=story&story_id=$3 [QSA,L]
+	RewriteRule ^(.*).html$ index.php?handler=category&route=$1 [QSA,L]
 </IfModule>
