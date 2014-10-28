@@ -11,6 +11,8 @@ class data_story extends data
 
     public $title;
 
+    public $brief;
+
     public function __construct( $data=null )
     {
 
@@ -20,6 +22,7 @@ class data_story extends data
             if( isset( $data['category_id'] ) )      $this->category_id      = $data['category_id'];
             if( isset( $data['first_chapter_id'] ) ) $this->first_chapter_id = $data['first_chapter_id'];
             if( isset( $data['title'] ) )            $this->title            = $data['title'];
+            if( isset( $data['brief'] ) )            $this->brief            = $data['brief'];
         }
 
     }

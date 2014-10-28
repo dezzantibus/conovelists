@@ -15,6 +15,7 @@ class handler_category extends handler
         $stories = model_story::getByCategory( $category->id );
 
         $page = new layout_category( $category, $stories );
+        $page->render();
 
     }
 
