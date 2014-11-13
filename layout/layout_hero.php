@@ -1,6 +1,6 @@
 <?php
 
-class layout_menu extends layout
+class layout_hero extends layout
 {
 
 	private $h1;

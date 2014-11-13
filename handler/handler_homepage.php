@@ -7,8 +7,9 @@ class handler_homepage extends handler
     {
 
         // get data from the models
+        $menu = model_menu::getMenuData();
 
-        $page = new layout_homepage(  );
+        $page = new layout_homepage( $menu );
         $page->render();
 
     }

@@ -3,8 +3,13 @@
 class layout_menu extends layout
 {
 
-	function __construct()
+    private $menu_data;
+
+	function __construct( $menu_data )
 	{
+
+        $this->menu_data = $menu_data;
+
 	}
 	
 	public function render()

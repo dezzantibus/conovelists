@@ -9,7 +9,7 @@ abstract class layout_page extends layout
 	
 	protected $page_id;
 
-    private function renderTop()
+    protected function renderTop()
     {
 
         echo 
@@ -40,7 +40,7 @@ abstract class layout_page extends layout
 
     }
 
-    private function renderBottom()
+    protected function renderBottom()
     {
 		echo
 			'<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>',

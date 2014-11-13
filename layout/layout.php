@@ -12,12 +12,12 @@ abstract class layout
 
     }
 
-    private function renderTop()
+    protected function renderTop()
     {
 
     }
 
-    private function renderBottom()
+    protected function renderBottom()
     {
 
     }
