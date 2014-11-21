@@ -6,20 +6,20 @@ class db
     /** @var $connection PDO  */
     static protected $connection = null;
 
-    static protected $host;
+    const HOST = '127.0.0.1';
 
-    static protected $database;
+    const SCHEMA = 'conovelists';
 
-    static protected $user;
+    const USER = 'root';
 
-    static protected $password;
+    const PASS = 'antani75';
 
     public static function connect()
     {
         if( is_null( self::$connection ) )
         {
             static::getValues();
-            static::$connection = new PDO( "mysql:host=$host;dbname=$database", $user, $password );
+            static::$connection = new PDO( 'mysql:host=' . self::HOST . ';dbname=' . self::SCHEMA, self::USER, self::PASS );
         }
     }
 
