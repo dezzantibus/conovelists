@@ -15,15 +15,14 @@ class class_finder
             case 'layout':
 				switch( $frags[1] )
 				{
-					case 'homepage':
-						require_once __DIR__ . "/../{$frags[0]}/{$frags[1]}/$name.php"; break;
-					default:
-						require_once __DIR__ . "/../{$frags[0]}/$name.php";
+                    case 'homepage': require_once __DIR__ . '/../layout/homepage/' . $name . '.php'; break;
+                    case 'base':     require_once __DIR__ . '/../layout/base/' . $name . '.php';     break;
+                    case 'form':     require_once __DIR__ . '/../layout/form/' . $name . '.php';     break;
+					default:         require_once __DIR__ . '/../{$frags[0]}/' . $name . '.php';
 				}
 				break;
 			
-            default:
-                require_once __DIR__ . "/../{$frags[0]}/$name.php";
+            default: require_once __DIR__ . "/../{$frags[0]}/$name.php";
         }
 
     }
