@@ -5,10 +5,10 @@ class layout_menu extends layout
 
     private $menu_data;
 
-	function __construct( $menu_data )
+	function __construct()
 	{
 
-        $this->menu_data = $menu_data;
+        //$this->menu_data = $menu_data;
 
 	}
 	

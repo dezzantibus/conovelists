@@ -5,12 +5,16 @@ class layout_homepage_popular extends layout
 	
 	private $popular;
 
-	function __construct( data_array $popular )
+	function __construct()
 	{
-		$this->popular = $popular;
+		$this->popular = new data_array();
+				$this->popular->add( new data_user )
+			 		  ->add( new data_user )
+			 		  ->add( new data_user );
+
 	}
 	
-	private function render()
+	public function render()
     {
 		
 		echo 

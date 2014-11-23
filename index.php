@@ -1,13 +1,17 @@
 <?php
 
-die('PUPPA');
-
 require_once __DIR__ . '/tools/class_finder.php';
 
 spl_autoload_register( 'class_finder::getClassFile' );
 
-$handler = $_GET['handler'];
-
+if( isset( $_GET['handler'] ) )
+{
+	$handler = 'handler_' . $_GET['handler'];
+}
+else
+{
+	$handler = 'handler_homepage';
+}
 $page = new $handler;
 
 $page->run();

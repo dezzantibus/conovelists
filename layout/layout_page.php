@@ -22,14 +22,15 @@ abstract class layout_page extends layout
 					'<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">',
 					'<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Merriweather:400,400italic,700italic" rel="stylesheet" type="text/css">',
 					'<link rel="stylesheet" href="/css/bootstrap.min.css">',
-					'<link rel="stylesheet" href="css/style.css">',
-					'<link rel="stylesheet" href="css/icons.css">',
-					'<link rel="stylesheet" href="css/animate.min.css">',
-					'<link rel="shortcut icon" href="img/ico/32.png" sizes="32x32" type="image/png"/>',
-					'<link rel="apple-touch-icon-precomposed" href="img/ico/60.png" type="image/png"/>',
-					'<link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/ico/72.png" type="image/png"/>',
-					'<link rel="apple-touch-icon-precomposed" sizes="120x120" href="img/ico/120.png" type="image/png"/>',
-					'<link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/ico/152.png" type="image/png"/>',
+					'<link rel="stylesheet" href="/css/style.css">',
+					'<link rel="stylesheet" href="/css/icons.css">',
+					'<link rel="stylesheet" href="/css/animate.min.css">',
+					'<link rel="stylesheet" href="/css/mine.css">',
+					'<link rel="shortcut icon" href="/img/ico/32.png" sizes="32x32" type="image/png"/>',
+					'<link rel="apple-touch-icon-precomposed" href="/img/ico/60.png" type="image/png"/>',
+					'<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/ico/72.png" type="image/png"/>',
+					'<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/ico/120.png" type="image/png"/>',
+					'<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/img/ico/152.png" type="image/png"/>',
 					'<!--[if lt IE 9]>',
 						'<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>',
 						'<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>',
@@ -43,11 +44,11 @@ abstract class layout_page extends layout
     protected function renderBottom()
     {
 		echo
-			'<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>',
-			'<script type="text/javascript" src="js/bootstrap.min.js"></script>',
-			'<script type="text/javascript" src="js/placeholders.min.js"></script>',
-			'<script type="text/javascript" src="js/wow.min.js"></script>',
-			'<script type="text/javascript" src="js/custom.js"></script>',
+			'<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>',
+			'<script type="text/javascript" src="/js/bootstrap.min.js"></script>',
+			'<script type="text/javascript" src="/js/placeholders.min.js"></script>',
+			'<script type="text/javascript" src="/js/wow.min.js"></script>',
+			'<script type="text/javascript" src="/js/custom.js"></script>',
         '</body></html>';
     }
 

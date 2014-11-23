@@ -5,12 +5,15 @@ class layout_homepage_highlights extends layout
 
 	private $stories;
 
-	function __construct( data_array $stories )
+	function __construct()
 	{
-		$this->stories = $stories;
+		$this->stories = new data_array();
+		$this->stories->add( new data_user )
+			 		  ->add( new data_user )
+			 		  ->add( new data_user );
 	}
 	
-	private function render()
+	public function render()
     {
 		
 		foreach( $this->stories->getData() as $story )

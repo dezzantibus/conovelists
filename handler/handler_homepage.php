@@ -6,10 +6,11 @@ class handler_homepage extends handler
     function run()
     {
 
-        // get data from the models
-        $menu = model_menu::getMenuData();
+        /* get data from the models */
+//        $menu = model_menu::getMenuData();
 
-        $page = new layout_homepage( $menu );
+        /* display data */
+		$page = new layout_homepage();
         $page->render();
 
     }

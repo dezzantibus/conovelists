@@ -12,7 +12,7 @@ class layout_homepage_content extends layout
 		
 	}
 	
-	private function renderTop()
+	protected function renderTop()
     {
 		echo 
 		'<div id="start" class="container content">',
@@ -20,7 +20,7 @@ class layout_homepage_content extends layout
 				'<div class="col-md-10 col-md-offset-1">';
     }
 
-    private function renderBottom()
+    protected function renderBottom()
     {
 				echo
 				'</div>',	

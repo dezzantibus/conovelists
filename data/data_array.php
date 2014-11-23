@@ -18,6 +18,7 @@ class data_array
     public function add( data $data )
     {
         $this->array[] = $data;
+		return $this;
     }
 
     public function getData()

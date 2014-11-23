@@ -8,18 +8,18 @@ class layout_homepage_body extends layout
 		
 		$this->addChild( new layout_main_navigation() );
 		
-		$this->addChild( new layout_hero( 'Welcome to Co-Novelists', 'Come and enjoy a good story', 'image-bg' ) );
+		$this->addChild( new layout_hero( 'Welcome to Co-Novelists', 'Come and enjoy a good story', 'homepage_header_bg' ) );
 		
 		$this->addChild( new layout_homepage_content() );
 		
 	}
 	
-	private function renderTop()
+	protected function renderTop()
     {
 		echo '<div id="wrap">';
     }
 
-    private function renderBottom()
+    protected function renderBottom()
     {
 		echo '</div>';
     }

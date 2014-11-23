@@ -8,7 +8,7 @@ class layout_main_navigation extends layout
 	
 	}
 	
-	private function render()
+	public function render()
     {
 		echo 
 		'<div id="main-nav" class="">',
