@@ -12,6 +12,29 @@
 	background-image:url(/img/header/contact.jpg);
 }
 
+.category1_header_bg{
+	background-image:url(/img/header/scifi.jpg);
+}
+
+.category2_header_bg{
+	background-image:url(/img/header/romance.jpg);
+}
+
+.category3_header_bg{
+	background-image:url(/img/header/thriller.jpg);
+}
+
+.category4_header_bg{
+	background-image:url(/img/header/fantasy.jpg);
+}
+
+.category5_header_bg{
+	background-image:url(/img/header/horror.jpg);
+}
+
+.category6_header_bg{
+	background-image:url(/img/header/adventure.jpg);
+}
 
 #menu>ul{
 	white-space:normal;
