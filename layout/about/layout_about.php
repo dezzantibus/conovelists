@@ -1,6 +1,6 @@
 <?php
 
-class layout_homepage extends layout_page
+class layout_about extends layout_page
 {
 
     function __construct( data_array $categories, data_array $bookmarks, data_statistics $footerStats )
@@ -10,11 +10,11 @@ class layout_homepage extends layout_page
 
         $this->description = 'Description';
 
-		$this->page_id = 'home';
+		$this->page_id = 'about';
 		
 		$this->addChild( new layout_menu( $categories, $bookmarks ) );
 
-		$this->addChild( new layout_homepage_body( $footerStats ) );	
+		$this->addChild( new layout_about_body( $footerStats ) );	
 
     }
 

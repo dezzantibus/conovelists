@@ -1,6 +1,6 @@
 <?php
 
-class handler_homepage extends handler
+class handler_about extends handler
 {
 
     function run()
@@ -23,7 +23,7 @@ class handler_homepage extends handler
 		}
 
         /* display data */
-		$page = new layout_homepage( $categories, $bookmarks, $footerStats );
+		$page = new layout_about( $categories, $bookmarks, $footerStats );
         $page->render();
 
     }

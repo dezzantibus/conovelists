@@ -3,8 +3,12 @@
 class layout_footer extends layout
 {
 
-	function __construct()
+	/** @var $statistics data_statistics */
+	private $statistics;
+
+	function __construct( data_statistics $statistics )
 	{
+		$this->statistics = $statistics;
 	}
 	
 	public function render()
@@ -47,20 +51,20 @@ class layout_footer extends layout
 		'<div class="col-sm-4 col-md-4 footer-widget">',
 			'<h3>Statistics</h3>',
 
-			'<span>We can\'t compete with Mom! Her company is big and evil! </span>',
+			'<span>In the last ', $this->statistics->days, ' days there have been</span>',
 
 			'<div class="stats">',
 				'<div class="line">',
-					'<span class="counter">27</span>',
-					'<span class="caption">Articles</span>',
+					'<span class="counter">', $this->statistics->stories, '</span>',
+					'<span class="caption">New stories</span>',
 				'</div>',
 				'<div class="line">',
-					'<span class="counter">208</span>',
-					'<span class="caption">Comments</span>',
+					'<span class="counter">', $this->statistics->chapters, '</span>',
+					'<span class="caption">New chapters</span>',
 				'</div>',
 				'<div class="line">',
-					'<span class="counter">2</span>',
-					'<span class="caption">Authors</span>',
+					'<span class="counter">', $this->statistics->users, '</span>',
+					'<span class="caption">New users</span>',
 				'</div>',                 
 			'</div>',
 		'</div>';

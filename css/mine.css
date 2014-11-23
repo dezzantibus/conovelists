@@ -4,6 +4,15 @@
 	background-image:url(/img/header/homepage.jpg);
 }
 
+.about_header_bg{
+	background-image:url(/img/header/about.jpg);
+}
+
+.contact_header_bg{
+	background-image:url(/img/header/contact.jpg);
+}
+
+
 #menu>ul{
 	white-space:normal;
 }

@@ -1,6 +1,11 @@
 <IfModule mod_rewrite.c>
-	RewriteEngine on  
-	RewriteRule ^about/(.*).html$ index.php?handler=$1 [QSA,L]
+	RewriteEngine on 	 
+	RewriteRule ^about.html$ index.php?handler=about [QSA,L]
+	RewriteRule ^frequently-asked-questions.html$ index.php?handler=faq [QSA,L]
+	RewriteRule ^terms-and-conditions.html$ index.php?handler=faq [QSA,L]
+	RewriteRule ^contacts.html$ index.php?handler=contacts [QSA,L]
+	RewriteRule ^admin/(.*).html$ index.php?handler=admin&route=$1 [QSA,L]
+	RewriteRule ^form/(.*).html$ index.php?handler=form&route=$1 [QSA,L]
 	RewriteRule ^(0-9a-z)-(0-9a-z)/(.*)/(.*)/(.*).html$ index.php?handler=story&story_id=$1&chapter_id=$2 [QSA,L]
 	RewriteRule ^(0-9a-z)/(.*)/(.*).html$ index.php?handler=story&story_id=$3 [QSA,L]
 	RewriteRule ^(.*).html$ index.php?handler=category&route=$1 [QSA,L]

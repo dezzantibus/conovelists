@@ -87,10 +87,10 @@ class layout_menu extends layout
 				}
 				
 				echo
-				'<li><a href="about.html"><i class="icon-tag"></i>About</a></li>',
-				'<li><a href="about.html"><i class="icon-cog"></i>F.A.Q.</a></li>',
-				'<li><a href="contact.html"><i class="icon-envelope"></i>Contact</a></li>',
-				'<li><a href="contact.html"><i class="icon-file"></i>Terms and conditions</a></li>',
+				'<li><a href="/about.html"><i class="icon-tag"></i>About Co-Novelists</a></li>',
+				'<li><a href="/frequently-asked-questions.html"><i class="icon-cog"></i>F.A.Q.</a></li>',
+				'<li><a href="/contacts.html"><i class="icon-envelope"></i>Contact</a></li>',
+				'<li><a href="/terms-and-conditions.html"><i class="icon-file"></i>Terms and conditions</a></li>',
 			'</ul>',
 		'</div>';
 		
