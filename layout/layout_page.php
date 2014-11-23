@@ -43,6 +43,8 @@ abstract class layout_page extends layout
 
     protected function renderBottom()
     {
+		$this->loginForm();
+		
 		echo
 			'<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>',
 			'<script type="text/javascript" src="/js/bootstrap.min.js"></script>',
@@ -51,5 +53,51 @@ abstract class layout_page extends layout
 			'<script type="text/javascript" src="/js/custom.js"></script>',
         '</body></html>';
     }
+	
+	private function loginForm()
+	{
+		
+		echo
+		'<div class="modal fade login" id="loginModal" aria-hidden="true">',
+		  '<div class="modal-dialog login">',
+			  '<div class="modal-content">',
+				 '<div class="modal-header">',
+					'<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>',
+					'<h4 class="modal-title">Login with</h4>',
+				'</div>',
+				'<div class="modal-body"> ', 
+					'<div class="box">',
+						'<div class="form loginBox">',
+							'<form class="myform" method="post" action="/login" accept-charset="UTF-8">',
+								'<div class="form-group">',
+									'<label class="control-label">Email</label>',
+									'<div class="controls">',
+										'<input id="email" class="form-control" type="text" placeholder="Email" name="email">',
+									'</div>',
+								'</div>',
+								'<div class="form-group">',
+									'<label class="control-label">password</label>',
+									'<div class="controls">',
+										'<input id="password" class="form-control" type="password" placeholder="Password" name="password">',
+									'</div>',
+								'</div>',
+								'<p class="text-center"><a href="">Forgot password?</a></p>',
+								'<input class="btn btn-block" type="button" value="Login" >',
+							'</form>',
+						'</div>',
+					'</div>',
+				'</div>',
+				'<div class="modal-footer">',
+					'<div class="forgot login-footer">',
+						'<span>Looking to ',
+							 '<a href="#">create an account</a>',
+						'?</span>',
+					'</div>',
+				'</div>',       
+			  '</div>',
+		  '</div>',
+	  '</div>';
+	
+	}
 
 }
