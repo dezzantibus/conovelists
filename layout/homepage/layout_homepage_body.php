@@ -12,6 +12,8 @@ class layout_homepage_body extends layout
 		
 		$this->addChild( new layout_homepage_content() );
 		
+		$this->addChild( new layout_footer() );
+		
 	}
 	
 	protected function renderTop()
