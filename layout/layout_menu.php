@@ -3,12 +3,16 @@
 class layout_menu extends layout
 {
 
-    private $menu_data;
+    private $categories;
+	
+	private $bookmarks;
 
-	function __construct()
+	function __construct( data_array $categories, data_array $bookmarks )
 	{
 
-        //$this->menu_data = $menu_data;
+        $this->categories = $categories;
+
+        $this->bookmarks = $bookmarks;
 
 	}
 	
@@ -26,41 +30,69 @@ class layout_menu extends layout
 					'</div>',
 				'</form>',
 				'<li><a href="index.html"><i class="icon-lime"></i>Home</a></li>',
-				'<li><a href="about.html"><i class="icon-user"></i>About</a></li>',
 				'<li class="submenu">',
 					'<a href="#"><i class="icon-books"></i>Categories<b class="caret"></b></a>',
-					'<ul class="submenu-list">',
-						'<li><a href="category.html">Blogroll <span class="badge golden">2</span></a></li>',
-						'<li><a href="category.html">Quotes<span class="badge">4</span></a></li>',
-						'<li><a href="category.html">Travel<span class="badge red">12</span></a></li>',
-						'<li><a href="category.html">Writing<span class="badge blue">7</span></a></li>',
+					'<ul class="submenu-list">';
+						
+						/** @var $category data_category */
+						foreach( $this->categories->getData() as $category )
+						{
+							echo '<li><a href="/', $category->url, '.html">', $category->name, /*  this will contain some kind of stat ' <span class="badge golden">2</span>' */ '</a></li>';
+						}
+						
+					echo
 					'</ul>',	
-				'</li>',
-				'<li class="submenu submenu-open">',
-					'<a href="#"><i class="icon-file"></i>Pages<b class="caret"></b></a>',
-					'<ul class="submenu-list">',
-						'<li><a href="post-image.html">Post Image</a></li>',
-						'<li><a href="post-audio.html">Post Audio</a></li>',
-						'<li><a href="post-video.html">Post Video</a></li>',						
-						'<li><a href="post-typography.html">Typography</a></li>',
-						'<li><a href="author.html">Author</a></li>',
-						'<li><a href="search.html">Search</a></li>',
-						'<li><a href="404.html">404 Error</a></li>',
-					'</ul>',		
 				'</li>',
 				'<li class="submenu">',
-					'<a href="#"><i class="icon-calendar"></i>Archives <b class="caret"></b></a>',
+					'<a href="#"><i class="icon-share"></i>Share<b class="caret"></b></a>',
 					'<ul class="submenu-list">',
-						'<li><a href="archives.html">June<span>2014</span></a></li>',
-						'<li><a href="archives.html">May<span>2014</span></a></li>',
-						'<li><a href="archives.html">January<span>2014</span></a></li>',
-						'<li><a href="archives.html">October<span>2013</span></a></li>',
-					'</ul>',	
-				'</li>',
+						'<li><a href="post-image.html"><i class="icon-facebook"></i>Facebook</a></li>',
+						'<li><a href="post-audio.html"><i class="icon-twitter"></i>Twitter</a></li>',
+						'<li><a href="post-video.html"><i class="icon-googleplus"></i>Google+</a></li>',
+					'</ul>',		
+				'</li>';
+				
+				if( $_SESSION['user'] instanceof data_user )
+				{
+				
+					echo
+					'<li><a href="about.html"><i class="icon-user"></i>My profile</a></li>',
+					'<li class="submenu">',
+						'<a href="#"><i class="icon-bookmark"></i>Bookmarks<b class="caret"></b></a>',
+						'<ul class="submenu-list">';
+						
+							/*
+							@TODO
+							The links for the bookmarks are missing.
+							For the moment I don't have the data do build them.
+							*/
+							
+							if( $this->bookmarks->isEmpty() )
+							{
+								echo '<li><a class="not-link">You have no bookmarks</a></li>';
+							}
+							else
+							{
+								/** @var $category data_bookmark */
+								foreach( $this->bookmarks->getData() as $bookmark )
+								{
+									echo '<li><a href="#">', $bookmark->name, '</a></li>';
+								}
+							}
+						
+						echo
+						'</ul>',		
+					'</li>';
+				
+				}
+				
+				echo
+				'<li><a href="about.html"><i class="icon-tag"></i>About</a></li>',
+				'<li><a href="about.html"><i class="icon-cog"></i>F.A.Q.</a></li>',
 				'<li><a href="contact.html"><i class="icon-envelope"></i>Contact</a></li>',
+				'<li><a href="contact.html"><i class="icon-file"></i>Terms and conditions</a></li>',
 			'</ul>',
 		'</div>';
-
 		
 	}
 	

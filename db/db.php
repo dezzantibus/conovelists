@@ -18,7 +18,6 @@ class db
     {
         if( is_null( self::$connection ) )
         {
-            static::getValues();
             static::$connection = new PDO( 'mysql:host=' . self::HOST . ';dbname=' . self::SCHEMA, self::USER, self::PASS );
         }
     }

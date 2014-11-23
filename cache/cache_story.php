@@ -1,4 +1,4 @@
-<?
+<?php
 
 class cache_story extends cache
 {

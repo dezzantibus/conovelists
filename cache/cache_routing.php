@@ -1,4 +1,4 @@
-<?
+<?php
 
 class cache_routing extends cache
 {

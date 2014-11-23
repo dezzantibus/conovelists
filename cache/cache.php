@@ -1,4 +1,4 @@
-<?
+<?php
 
 abstract class cache
 {
@@ -11,7 +11,7 @@ abstract class cache
 
     const PORT = 11211;
 
-    const COMPRESS = MEMCACHE_COMPRESSED;
+//    const COMPRESS = MEMCACHE_COMPRESSED;
 
     static private function stampIndex( $index )
     {
@@ -20,6 +20,9 @@ abstract class cache
 
     static public function activate()
     {
+
+		/** @TODO remove this once memcache is up and running */
+		self::$available = false;
 
         if( empty( self::$available ) && self::$available !== false )
         {

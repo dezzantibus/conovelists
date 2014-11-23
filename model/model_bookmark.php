@@ -1,11 +1,17 @@
 <?php
 
-class model_user extends model
+class model_bookmark extends model
 {
 
-    static function create( data_user $user )
+    static function create( data_bookmark $user )
     {
 
+
+		/*
+		
+		THIS IS model_user shit
+		needs rewriting for bookmark
+		
         $sql = '
             INSERT INTO `user`
                 (
@@ -44,90 +50,39 @@ class model_user extends model
             );
             return null;
         }
+		*/
 
     }
 
 
-    static function getById( $id )
+    static function getForUserId( $user_id )
     {
 
-        $row = cache_user::retrieve( $id );
+        $result = cache_bookmark::retrieve( $user_id );
 
-        if( empty( $row ) )
+        if( empty( $result ) )
         {
 
-            $sql = 'SELECT * FROM `user` where id = :id';
+            $sql = 'SELECT * FROM `bookmark` where user_id = :user_id';
 
             $query = db::prepare( $sql );
             $query
-				->bindInt( ':id', $id )
+				->bindInt( ':user_id', $user_id )
 				->execute();
 
-            $row = $query->fetch();
+			$result = new data_array();
 
-            cache_user::save( $id, $row, 0 );
+            while( $row = $query->fetch() )
+			{
+				$result->add( new data_bookmark( $row ) );
+			}
+
+            cache_user::save( $user_id, $result, 0 );
 
         }
 
-
-        return new data_user( $row );
+        return $result;
 
     }
-	
-	static function initialise()
-	{
-		
-		/* initialise user in session if it isn't */
-		if( !isset( $_SESSION['user'] ) )
-		{
-			$_SESSION['user'] = 0;
-		}
-		
-		/* check if already logged in */
-		if( $_SESSION['user'] instanceof data_user )
-		{
-			return true;
-		}
-		
-		/* check if user has login cookie */
-		if( !isset( $_COOKIE['user_id'] ) )
-		{
-			return false;
-		}
-		
-		/* get user from cookie */
-		$id   = security::decrypt( $_COOKIE['user_id'] );
-		if( !is_numeric( $id ) )
-		{
-			return false;
-		}
-
-		/* get user data */
-		$user = self::getById( $id );
-		
-		if( empty( $user->id ) )
-		{
-			return false;
-		}
-		
-		$_SESSION['user'] = $user;
-		return true;
-				
-	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

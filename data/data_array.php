@@ -1,6 +1,6 @@
 <?php
 
-class data_array
+class data_array extends data
 {
 
     private $array;
@@ -28,7 +28,7 @@ class data_array
 
     public function last()
     {
-        if( empty( $this->array ) )
+        if( $this->isEmpty )
         {
             return null;
         }
@@ -37,11 +37,16 @@ class data_array
 
     public function first()
     {
-        if( empty( $this->array ) )
+        if( $this->isEmpty )
         {
             return null;
         }
         return array_shift( $this->array );
+    }
+
+    public function isEmpty()
+    {
+        return empty( $this->array );
     }
 
 }

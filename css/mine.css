@@ -3,3 +3,15 @@
 .homepage_header_bg{
 	background-image:url(/img/header/homepage.jpg);
 }
+
+#menu>ul{
+	white-space:normal;
+}
+
+#menu>ul>li a.not-link {
+	cursor:default;
+}
+
+#menu>ul>li a.not-link:hover {
+	color: #737d83;
+}

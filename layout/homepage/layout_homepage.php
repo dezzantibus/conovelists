@@ -3,7 +3,7 @@
 class layout_homepage extends layout_page
 {
 
-    function __construct()
+    function __construct( data_array $categories, data_array $bookmarks )
     {
 
         $this->title = 'Co-Novelists';
@@ -12,7 +12,7 @@ class layout_homepage extends layout_page
 
 		$this->page_id = 'home';
 		
-		$this->addChild( new layout_menu() );
+		$this->addChild( new layout_menu( $categories, $bookmarks ) );
 
 		$this->addchild( new layout_homepage_body() );	
 

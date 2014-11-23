@@ -46,7 +46,7 @@ class model_category extends model
         if( empty( $row ) )
         {
 
-            $sql = 'SELECT * FROM `category` where id = :id';
+            $sql = 'SELECT * FROM `category` WHERE id = :id';
 
             $query = db::prepare( $sql );
             $query->bindInt( ':id', $id );
@@ -68,7 +68,7 @@ class model_category extends model
         if( empty( $row ) )
         {
 
-            $sql = 'SELECT * FROM `category` where url = :url';
+            $sql = 'SELECT * FROM `category` WHERE url = :url';
 
             $query = db::prepare( $sql );
             $query->bindString( ':url', $url );
@@ -82,5 +82,33 @@ class model_category extends model
         return new data_category( $row );
 
     }
+	
+	static function getList()
+	{
+		
+		$result = cache_category::retrieve( 'full list' );
+		
+		if( empty( $result ) )
+        {
+
+            $sql = 'SELECT * FROM `category` ORDER BY name';
+
+            $query = db::prepare( $sql );
+			$query->execute();
+
+			$result = new data_array();
+
+            while( $row = $query->fetch() )
+			{
+				$result->add( new data_category( $row ) );
+			}
+			
+            cache_category::save( $result, $row, 0 );
+
+        }
+		
+		return $result;
+	
+	}
 
 }
