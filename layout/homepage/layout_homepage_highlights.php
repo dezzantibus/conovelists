@@ -18,8 +18,17 @@ class layout_homepage_highlights extends layout
 		
 		foreach( $this->stories->getData() as $story )
 		{
+            if( next( $this->stories->getData() ) === false )
+            {
+                $class = 'clearfix last';
+            }
+            else
+            {
+                $class = 'clearfix';
+            }
+
 			echo 
-			'<article class="clearfix">',
+			'<article class="', $class, '">',
 				'<div class="post-date">',
 					'May 26, 2014 | <a href="">Melissa Sing </a> <span><a href="">11 Comments</a></span>',
 				'</div>',	
