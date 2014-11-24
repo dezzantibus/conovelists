@@ -1,6 +1,6 @@
 <?php
 
-class layout_homepage_popular extends layout
+class layout_popular extends layout
 {
 	
 	private $popular;

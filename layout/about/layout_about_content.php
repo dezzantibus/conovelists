@@ -1,14 +1,14 @@
 <?php
 
-class layout_homepage_content extends layout
+class layout_about_content extends layout
 {
 
 	function __construct()
 	{
 		
-		$this->addChild( new layout_homepage_highlights() );
-		
-		$this->addChild( new layout_popular() );
+		$this->addChild( new layout_about_data() );
+
+        $this->addChild( new layout_popular() );
 		
 	}
 	

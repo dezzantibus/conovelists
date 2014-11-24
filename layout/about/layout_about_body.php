@@ -10,7 +10,7 @@ class layout_about_body extends layout
 		
 		$this->addChild( new layout_hero( 'About Co-Novelists', 'What is co-novelists about?', 'about_header_bg' ) );
 		
-		//$this->addChild( new layout_homepage_content() );
+		$this->addChild( new layout_about_content() );
 		
 		$this->addChild( new layout_footer( $footerStats ) );
 		
