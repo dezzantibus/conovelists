@@ -16,9 +16,10 @@ class layout_homepage_highlights extends layout
 	public function render()
     {
 		
-		foreach( $this->stories->getData() as $story )
+		while( $story = $this->stories->first()  )
 		{
-            if( next( $this->stories->getData() ) === false )
+
+            if( $this->stories->isEmpty() )
             {
                 $class = 'clearfix last';
             }
