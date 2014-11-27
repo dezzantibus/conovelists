@@ -13,12 +13,12 @@ class class_finder
             case 'message':  require_once __DIR__ . '/message.php';  break;
             case 'router':   require_once __DIR__ . '/router.php';   break;
             case 'security': require_once __DIR__ . '/security.php'; break;
-            case 'layout':   self::getLayoutClass( $name, $frags );        break;			
+            case 'layout':   self::getLayoutClass( $name, $frags );  break;			
+            case 'handler':  self::getHandlerClass( $name, $frags ); break;			
             default: require_once __DIR__ . '/../' . $frags[0] . '/' . $name . '.php';
         }
 
     }
-	
 	
 	private static function getLayoutClass( $name, $frags )
 	{
@@ -37,6 +37,24 @@ class class_finder
 		else
 		{
 			require_once __DIR__ . '/../layout/layout.php';
+		}
+	
+	}
+	
+	private static function getHandlerClass( $name, $frags )
+	{
+	
+		if( isset( $frags[1] ) )
+		{ 
+			switch( $frags[1] )
+			{
+				case 'action': require_once __DIR__ . '/../handler/action/' . $name . '.php'; break;
+				default:       require_once __DIR__ . '/../handler/' . $name . '.php';
+			}
+		}
+		else
+		{
+			require_once __DIR__ . '/../handler/handler.php';
 		}
 	
 	}

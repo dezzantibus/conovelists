@@ -35,6 +35,7 @@ abstract class layout_form extends layout
 
         echo
         '<form action="', $this->action, '" class="myform ', $this->class, '" method="post" novalidate id="', $this->id, '">',
+			'<input type="hidden" name="return" value="', json_encode( $_GET ) ,'">',
             '<div class="row clearfix">',
                 '<div class="col-xs-12 col-sm-6 col-md-6">';
 

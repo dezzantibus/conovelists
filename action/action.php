@@ -11,4 +11,23 @@
 abstract class action
 {
 
+	protected function returnToPage( $jsonGet )
+	{
+		
+		$_GET = json_decode( $jsonGet );
+		
+		if( isset( $_GET['handler'] ) )
+		{
+			$handler = $_GET['handler'];
+		}
+		else
+		{
+			$handler = 'handler_homepage';
+		}
+		$page = new $handler;
+		
+		$page->run();
+		
+	}
+
 }

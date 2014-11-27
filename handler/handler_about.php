@@ -3,7 +3,7 @@
 class handler_about extends handler
 {
 
-    function run()
+    public function run()
     {
 
         /* get data from the models */

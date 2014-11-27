@@ -9,7 +9,7 @@ model_user::initialise();
 
 if( isset( $_GET['handler'] ) )
 {
-	$handler = 'handler_' . $_GET['handler'];
+	$handler = $_GET['handler'];
 }
 else
 {

@@ -3,7 +3,7 @@
 class handler_category extends handler
 {
 
-    function run()
+    public function run()
     {
 
         $category_url = $_GET['route'];

@@ -3,7 +3,7 @@
 class handler_homepage extends handler
 {
 
-    function run()
+    public function run()
     {
 
         /* get data from the models */

@@ -3,7 +3,7 @@
 class model_user extends model
 {
 
-    static function create( data_user $user )
+    public static function create( data_user $user )
     {
 
         $sql = '
@@ -23,9 +23,9 @@ class model_user extends model
         $query
             ->bindString( ':first_name',    $user->first_name )
             ->bindString( ':last_name',     $user->last_name )
-            ->bindString( ':email',         $user->email)
+            ->bindString( ':email',         $user->email )
             ->bindString( ':nick',          $user->nick )
-            ->bindString( ':pass',          $user->pass)
+            ->bindString( ':pass',          self::hashPassword( $user->pass ) )
             ->bindDate  ( ':date_of_birth', $user->date_of_birth )
             ->bindInt   ( ':gender',        $user->gender );
 
@@ -47,8 +47,7 @@ class model_user extends model
 
     }
 
-
-    static function getById( $id )
+    public static function getById( $id )
     {
 
         $row = cache_user::retrieve( $id );
@@ -74,7 +73,38 @@ class model_user extends model
 
     }
 	
-	static function initialise()
+	public static function login( $email, $pass )
+	{
+		
+		$sql = '
+			SELECT * 
+			FROM user 
+			WHERE pass = :pass
+				AND email = :email
+		';
+		
+		$query = db::prepare( $sql );
+		$query
+			->bindString( ':email', $email )
+			->bindString( ':pass',  self::hashPassword( $pass ) )
+			->execute();
+		
+		$row = $query->fetch();
+		
+		if( empty( $row ) )
+		{
+			message::addError( 
+				'Login failed. Please check your login data', 
+				'Failed login with email ' . $email . ' and password ' . $pass
+			);
+			return null;
+		}
+		
+		return new data_user( $row );
+		
+	}
+	
+	public static function initialise()
 	{
 		
 		/* initialise user in session if it isn't */
@@ -113,6 +143,13 @@ class model_user extends model
 		$_SESSION['user'] = $user;
 		return true;
 				
+	}
+	
+	private static function hashPassword( $password )
+	{
+
+		return hash( 'sha256', 'zante-' . $password . '-zante' );
+
 	}
 
 }
