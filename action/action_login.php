@@ -7,7 +7,7 @@ class action_login extends action
 	public function run()
     {
 
-		$user = model_user::login( $_POST['email'], $_POST['pass'] );
+		$user = model_user::login( $_POST['email'], $_POST['password'] );
 		
 		if( $user instanceof data_user )
 		{
