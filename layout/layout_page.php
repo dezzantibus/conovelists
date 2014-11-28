@@ -43,7 +43,10 @@ abstract class layout_page extends layout
 
     protected function renderBottom()
     {
-		$this->loginForm();
+        if( $_SESSION['user'] instanceof data_user )
+        {
+            $this->loginForm();
+        }
 		
 		echo
 			'<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>',
@@ -56,7 +59,7 @@ abstract class layout_page extends layout
 	
 	private function loginForm()
 	{
-		
+
 		echo
 		'<div class="modal fade login" id="loginModal" aria-hidden="true">',
 		  '<div class="modal-dialog login">',
@@ -68,7 +71,7 @@ abstract class layout_page extends layout
 				'<div class="modal-body"> ', 
 					'<div class="box">',
 						'<div class="form loginBox">',
-							'<form class="myform" method="post" action="/login" accept-charset="UTF-8">',
+							'<form class="myform" method="post" action="/action/login.html" accept-charset="UTF-8">',
 								'<div class="form-group">',
 									'<label class="control-label">Email</label>',
 									'<div class="controls">',
