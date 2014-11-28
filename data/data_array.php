@@ -28,7 +28,7 @@ class data_array extends data
 
     public function last()
     {
-        if( $this->isEmpty )
+        if( $this->isEmpty() )
         {
             return null;
         }
@@ -37,7 +37,7 @@ class data_array extends data
 
     public function first()
     {
-        if( $this->isEmpty )
+        if( $this->isEmpty() )
         {
             return null;
         }
