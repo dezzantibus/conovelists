@@ -43,7 +43,7 @@ abstract class layout_page extends layout
 
     protected function renderBottom()
     {
-        if( $_SESSION['user'] instanceof data_user )
+        if( !$_SESSION['user'] instanceof data_user )
         {
             $this->loginForm();
         }
