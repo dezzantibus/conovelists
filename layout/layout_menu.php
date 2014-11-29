@@ -29,7 +29,7 @@ class layout_menu extends layout
 						'<a href="#" class="close-menu"><i class="icon-close"></i></a>',
 					'</div>',
 				'</form>',
-				'<li><a href="index.html"><i class="icon-lime"></i>Home</a></li>',
+				'<li><a href="/"><i class="icon-lime"></i>Home</a></li>',
 				'<li class="submenu">',
 					'<a href="#"><i class="icon-books"></i>Categories<b class="caret"></b></a>',
 					'<ul class="submenu-list">';

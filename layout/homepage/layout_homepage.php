@@ -6,7 +6,7 @@ class layout_homepage extends layout_page
     function __construct( data_array $categories, data_array $bookmarks, data_statistics $footerStats )
     {
 
-        $this->title = 'Co-Novelists';
+        $this->title = 'Homepage';
 
         $this->description = 'Description';
 

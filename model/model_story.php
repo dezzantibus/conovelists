@@ -29,7 +29,8 @@ class model_story extends model
         $query
             ->bindInt   ( ':category_id',      $story->category_id )
             ->bindint   ( ':first_chapter_id', $story->first_chapter_id )
-            ->bindString( ':brief',            $story->brief);
+            ->bindString( ':brief',            $story->brief)
+			->execute();
 
         $success = $query->execute();
 
@@ -61,7 +62,9 @@ class model_story extends model
             $sql = 'SELECT * FROM `story` where id = :id';
 
             $query = db::prepare( $sql );
-            $query->bindInt( ':id', $id );
+            $query
+				->bindInt( ':id', $id )
+				->execute();
 
             $row = $query->fetch();
 
@@ -94,7 +97,8 @@ class model_story extends model
             $query
                 ->bindInt( ':category_id', $category_id )
                 ->bindInt( ':offset',      $offset )
-                ->bindInt( ':items',       data_category::STORIES_PER_PAGE );
+                ->bindInt( ':items',       data_category::STORIES_PER_PAGE )
+				->execute();
 
             $result = new data_array();
 

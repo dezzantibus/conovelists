@@ -49,7 +49,9 @@ class model_category extends model
             $sql = 'SELECT * FROM `category` WHERE id = :id';
 
             $query = db::prepare( $sql );
-            $query->bindInt( ':id', $id );
+            $query
+				->bindInt( ':id', $id )
+				->execute();
 
             $row = $query->fetch();
 
@@ -71,7 +73,9 @@ class model_category extends model
             $sql = 'SELECT * FROM `category` WHERE url = :url';
 
             $query = db::prepare( $sql );
-            $query->bindString( ':url', $url );
+            $query
+				->bindString( ':url', $url )
+				->execute();
 
             $row = $query->fetch();
 

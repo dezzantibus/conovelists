@@ -12,6 +12,8 @@ class data_story extends data
     public $title;
 
     public $brief;
+	
+	public $created;
 
     public function __construct( $data=null )
     {
@@ -23,8 +25,21 @@ class data_story extends data
             if( isset( $data['first_chapter_id'] ) ) $this->first_chapter_id = $data['first_chapter_id'];
             if( isset( $data['title'] ) )            $this->title            = $data['title'];
             if( isset( $data['brief'] ) )            $this->brief            = $data['brief'];
+            if( isset( $data['created'] ) )          $this->created          = $data['created'];
         }
 
     }
+	
+	public function getDate()
+	{
+		
+		if( empty( $this->created ) )
+		{
+			return null;
+		}
+		
+		return $this->dateForDisplay( $this->created );
+		
+	}
 
 }

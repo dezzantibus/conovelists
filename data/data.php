@@ -30,5 +30,10 @@ abstract class data
         return str_replace( $search, $replace, $string );
 
     }
+	
+	protected function dateForDisplay( $in )
+	{
+		return date( 'jS F, Y', strtotime( $in ) );
+	}
 
 }

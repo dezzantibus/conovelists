@@ -3,7 +3,7 @@
 abstract class layout
 {
 
-    private $children;
+    private $children = array();
 
     public function addChild( layout $child )
     {
