@@ -44,7 +44,7 @@ class data_user extends data
         switch( $this->gender )
         {
 
-            case self::UNKNOWN: return 'Unknown';
+            case self::UNKNOWN: return 'Not specified';
             case self::MALE:    return 'Male';
             case self::FEMALE:  return 'Female';
 

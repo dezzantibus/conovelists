@@ -9,6 +9,8 @@ abstract class layout
     {
 
         $this->children[] = $child;
+		
+		return $child;
 
     }
 

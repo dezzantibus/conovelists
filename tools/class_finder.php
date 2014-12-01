@@ -15,6 +15,7 @@ class class_finder
             case 'security': require_once __DIR__ . '/security.php'; break;
             case 'layout':   self::getLayoutClass( $name, $frags );  break;			
             case 'handler':  self::getHandlerClass( $name, $frags ); break;			
+            case 'action':   self::getActionClass( $name, $frags );  break;			
             default: require_once __DIR__ . '/../' . $frags[0] . '/' . $name . '.php';
         }
 
@@ -32,7 +33,9 @@ class class_finder
 				case 'base':     require_once __DIR__ . '/../layout/base/' . $name . '.php';     break;
 				case 'form':     require_once __DIR__ . '/../layout/form/' . $name . '.php';     break;
 				case 'about':    require_once __DIR__ . '/../layout/about/' . $name . '.php';    break;
-				case 'faq':      require_once __DIR__ . '/../layout/faq/' . $name . '.php';    break;
+				case 'faq':      require_once __DIR__ . '/../layout/faq/' . $name . '.php';      break;
+				case 'admin':    require_once __DIR__ . '/../layout/admin/' . $name . '.php';    break;
+				case 'tnc':      require_once __DIR__ . '/../layout/tnc/' . $name . '.php';      break;
 				default:         require_once __DIR__ . '/../layout/' . $name . '.php';
 			}
 		}
@@ -50,7 +53,7 @@ class class_finder
 		{ 
 			switch( $frags[1] )
 			{
-				case 'action': require_once __DIR__ . '/../handler/action/' . $name . '.php'; break;
+				case 'admin':  require_once __DIR__ . '/../handler/admin/' . $name . '.php'; break;
 				default:       require_once __DIR__ . '/../handler/' . $name . '.php';
 			}
 		}
@@ -58,6 +61,13 @@ class class_finder
 		{
 			require_once __DIR__ . '/../handler/handler.php';
 		}
+	
+	}
+
+	private static function getActionClass( $name, $frags )
+	{
+	
+		require_once __DIR__ . '/../action/' . $name . '.php';
 	
 	}
 

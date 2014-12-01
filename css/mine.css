@@ -55,3 +55,8 @@
 #menu>ul>li a.not-link:hover {
 	color: #737d83;
 }
+
+.myform .form-group label {
+	display: inline-block;
+	font-family: 'Open Sans', helvetica, arial, sans-serif;
+}
