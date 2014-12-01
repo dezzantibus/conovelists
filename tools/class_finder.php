@@ -32,6 +32,7 @@ class class_finder
 				case 'base':     require_once __DIR__ . '/../layout/base/' . $name . '.php';     break;
 				case 'form':     require_once __DIR__ . '/../layout/form/' . $name . '.php';     break;
 				case 'about':    require_once __DIR__ . '/../layout/about/' . $name . '.php';    break;
+				case 'faq':      require_once __DIR__ . '/../layout/faq/' . $name . '.php';    break;
 				default:         require_once __DIR__ . '/../layout/' . $name . '.php';
 			}
 		}

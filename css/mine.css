@@ -36,6 +36,14 @@
 	background-image:url(/img/header/adventure.jpg);
 }
 
+.faq_header_bg{
+	background-image:url(/img/header/faq.jpg);
+}
+
+.tnc_header_bg{
+	background-image:url(/img/header/tnc.jpg);
+}
+
 #menu>ul{
 	white-space:normal;
 }
