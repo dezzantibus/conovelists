@@ -39,9 +39,9 @@ class data_chapter extends data
     public function getLink()
     {
 
-        $id = $this->encode_id( $this->id, 10, 36 );
+        $id = $this->encode_id( $this->id );
 
-        $story_id = base_convert( $this->story_id, 10, 36 );
+        $story_id = $this->encode_id( $this->story_id );
 
         $story = $this->clean_for_url( $this->story );
 
