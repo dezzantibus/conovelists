@@ -14,7 +14,7 @@ class layout_admin_register_body extends layout
 
 		$this->addChild( new layout_main_navigation() );
 		
-		$this->addChild( new layout_hero( 'User Registration', 'Join us!', 'admin_header_bg' ) );
+		$this->addChild( new layout_hero( 'User Registration', 'Join us!', 'register_header_bg' ) );
 		
 		$form = $this->addChild( new layout_form( '/action/register.html', 'form_register', 'form_register' ) );
 		
@@ -24,7 +24,7 @@ class layout_admin_register_body extends layout
 		
 		$form->addChild( new layout_form_text( 'date_of_birth', 'Date of birth', $userData->date_of_birth ) );
 		
-		$form->addChild( new layout_form_radio( 'gender', 'Gender', $genders, $userData->gender ) );
+		$form->addChild( new layout_form_checkbox( 'gender', 'Gender', $genders, $userData->gender ) );
 		
 		$form->addChild( new layout_form_text( 'email', 'E-mail', $userData->email ) );
 		

@@ -1,6 +1,6 @@
 <?php
 
-class layout_form_radio extends layout
+class layout_form_checkbox extends layout
 {
 
     private $name;
@@ -49,7 +49,7 @@ class layout_form_radio extends layout
 
 				echo
 				'">',
-				'<input name="', $this->name, '" class="form-control input-lg requiredField', $this->class, '" type="radio" value="', $item['value'], '"';
+				'<input name="', $this->name, '" class="form-control input-lg requiredField', $this->class, '" type="checkbox" value="', $item['value'], '"';
 
 				if( !is_null( $this->placeholder ) )
 				{

@@ -44,6 +44,10 @@
 	background-image:url(/img/header/tnc.jpg);
 }
 
+.register_header_bg{
+	background-image:url(/img/header/register.jpg);
+}
+
 #menu>ul{
 	white-space:normal;
 }
@@ -59,4 +63,8 @@
 .myform .form-group label {
 	display: inline-block;
 	font-family: 'Open Sans', helvetica, arial, sans-serif;
+}
+
+form.myform .btn-group{
+	margin:-15px 0 15px 0;
 }
