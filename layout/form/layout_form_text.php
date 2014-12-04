@@ -1,5 +1,3 @@
-
-
 <?php
 
 class layout_form_text extends layout

@@ -15,7 +15,7 @@ class data_array extends data
         $this->array = array();
     }
 
-    public function add( data $data )
+    public function add( $data )
     {
         $this->array[] = $data;
 		return $this;

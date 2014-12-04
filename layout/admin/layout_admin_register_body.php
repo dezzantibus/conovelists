@@ -5,7 +5,13 @@ class layout_admin_register_body extends layout
 
 	function __construct( data_statistics $footerStats, data_user $userData )
 	{
-		
+
+        // TO BE REMOVED, THIS IS JUST TO TRY THE FORM ELEMENT
+        $genders = new data_array();
+        $genders->add( array( 'value' => 1, 'label' => 'male' ) );
+        $genders->add( array( 'value' => 2, 'label' => 'female' ) );
+        $genders->add( array( 'value' => 3, 'label' => 'undefined' ) );
+
 		$this->addChild( new layout_main_navigation() );
 		
 		$this->addChild( new layout_hero( 'User Registration', 'Join us!', 'admin_header_bg' ) );
@@ -18,7 +24,7 @@ class layout_admin_register_body extends layout
 		
 		$form->addChild( new layout_form_text( 'date_of_birth', 'Date of birth', $userData->date_of_birth ) );
 		
-		//$form->addChild( new layout_form_radio( 'gender', 'Gender', $userData->gender ) );
+		$form->addChild( new layout_form_radio( 'gender', 'Gender', $genders, $userData->gender ) );
 		
 		$form->addChild( new layout_form_text( 'email', 'E-mail', $userData->email ) );
 		
