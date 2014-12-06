@@ -68,3 +68,14 @@
 form.myform .btn-group{
 	margin:-15px 0 15px 0;
 }
+
+.message{
+	font-family: 'Open Sans', helvetica, arial, sans-serif;
+	list-style:none;
+}
+
+.error{
+	font-weight:bold;
+	color:#900;
+}
+

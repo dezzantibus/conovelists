@@ -72,6 +72,9 @@ abstract class layout_page extends layout
 					'<div class="box">',
 						'<div class="form loginBox">',
 							'<form class="myform" method="post" action="/action/login.html" accept-charset="UTF-8">',
+								'<input type="hidden" name="success_url" value="', $_SERVER['REQUEST_URI'], '">',
+								'<input type="hidden" name="error_url" value="', $_SERVER['REQUEST_URI'], '">',
+
 								'<div class="form-group">',
 									'<label class="control-label">Email</label>',
 									'<div class="controls">',
@@ -85,7 +88,7 @@ abstract class layout_page extends layout
 									'</div>',
 								'</div>',
 								'<p class="text-center"><a href="">Forgot password?</a></p>',
-								'<input class="btn btn-block" type="button" value="Login" >',
+								'<input class="btn btn-block" type="submit" value="Login" >',
 							'</form>',
 						'</div>',
 					'</div>',

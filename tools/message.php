@@ -18,7 +18,7 @@ class message
             self::$list = array();
         }
 
-        $list[] = array(
+        self::$list[] = array(
             'type'      => $type,
             'message'   => $message,
             'timestamp' => time(),
@@ -33,10 +33,13 @@ class message
      * The $log parameter is added to the apache error log
      * for use in debugging
      */
-    public static function addError( $message, $log )
+    public static function addError( $message, $log=null )
     {
         self::addMessage( 'ERROR', $message );
-        error_log( $log );
+		if( !empty( $log ) )
+		{
+        	error_log( $log );
+		}
     }
 
     /**
@@ -92,6 +95,12 @@ class message
      */
     public static function containsErrors()
     {
+		
+        if( ! is_array( self::$list ) )
+        {
+            self::$list = array();
+        }
+
         foreach( self::$list as $message )
         {
             if( $message['type'] == 'ERROR' )
@@ -99,7 +108,9 @@ class message
                 return true;
             }
         }
+		
         return false;
+		
     }
-
+	
 }

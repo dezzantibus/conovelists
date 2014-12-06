@@ -15,6 +15,8 @@ class data_user extends data
 
     public $last_name;
 
+    public $username;
+
     public $email;
 
     public $pass;
@@ -31,6 +33,7 @@ class data_user extends data
             if( isset( $data['id'] ) )            $this->id            = $data['id'];
             if( isset( $data['first_name'] ) )    $this->first_name    = $data['first_name'];
             if( isset( $data['last_name'] ) )     $this->last_name     = $data['last_name'];
+            if( isset( $data['username'] ) )      $this->username      = $data['username'];
             if( isset( $data['email'] ) )         $this->email         = $data['email'];
             if( isset( $data['pass'] ) )          $this->pass          = $data['pass'];
             if( isset( $data['date_of_birth'] ) ) $this->date_of_birth = $data['date_of_birth'];

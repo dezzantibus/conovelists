@@ -3,26 +3,28 @@
 class layout_form extends layout
 {
 
-    protected $action;
+    private $action;
 
-    protected $class;
+    private $class;
 
-    protected $id;
+    private $id;
 
-    protected $submit_message;
+    private $submit_message;
 
-    protected $error_message;
+    private $error_message;
 
-    protected $ok_message;
+    private $ok_message;
 
-    protected $submit_label;
-
-    function __construct( $action, $class, $id, $submit_message='Sending...', $error_message='Error', $ok_message='Success', $submit_label='Submit' )
+    private $submit_label;
+	
+    function __construct( $action, $class, $id, $success_url, $error_url, $submit_message='Sending...', $error_message='Error', $ok_message='Success', $submit_label='Submit' )
     {
 
         $this->action         = $action;
         $this->class          = $class;
         $this->id             = $id;
+        $this->success_url    = $success_url;
+        $this->error_url      = $error_url;
         $this->submit_message = $submit_message;
         $this->error_message  = $error_message;
         $this->ok_message     = $ok_message;
@@ -38,7 +40,8 @@ class layout_form extends layout
 			'<div class="row">',
 				'<div class="col-md-10 col-md-offset-1">',
 		'<form action="', $this->action, '" class="myform ', $this->class, '" method="post" novalidate id="', $this->id, '">',
-			'<input type="hidden" name="return" value="', json_encode( $_GET ) ,'">',
+			'<input type="hidden" name="success_url" value="', $this->success_url, '">',
+			'<input type="hidden" name="error_url" value="', $this->error_url, '">',
 			'<div class="row clearfix">',
 				'<div class="col-xs-12 col-sm-6 col-md-6">';
 
@@ -56,7 +59,19 @@ class layout_form extends layout
 		
 					'</p>',
 					'<input type="hidden" name="submitted" id="submitted3" value="true">',
-				'</div>',	
+				'</div>',
+				'<div class="col-xs-12 col-sm-6 col-md-6">',
+					'<ul>';
+				
+						foreach( message::getMessages() as $message )
+						{
+							echo
+							'<li class="message error">', $message['message'], '</li>';
+						}
+					
+					echo
+					'</ul>',
+				'</div>',
 			'</div>',
 		'</form>',
 				'</div>',	

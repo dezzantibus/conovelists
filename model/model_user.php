@@ -3,31 +3,40 @@
 class model_user extends model
 {
 
-    public static function create( data_user $user )
+    public static function create
+	(
+		$first_name, 
+		$last_name, 
+		$email, 
+		$username, 
+		$pass, 
+		$date_of_birth, 
+		$gender
+	)
     {
 
         $sql = '
             INSERT INTO `user`
                 (
-                first_name, last_name, email, nick,
+                first_name, last_name, email, username,
                 pass, date_of_birth, gender
                 )
             VALUES
                 (
-                :first_name, :last_name, :email, :nick,
+                :first_name, :last_name, :email, :username,
                 :pass, :date_of_birth, :gender
                 )
         ';
 
         $query = db::prepare( $sql );
         $query
-            ->bindString( ':first_name',    $user->first_name )
-            ->bindString( ':last_name',     $user->last_name )
-            ->bindString( ':email',         $user->email )
-            ->bindString( ':nick',          $user->nick )
-            ->bindString( ':pass',          self::hashPassword( $user->pass ) )
-            ->bindDate  ( ':date_of_birth', $user->date_of_birth )
-            ->bindInt   ( ':gender',        $user->gender );
+            ->bindString( ':first_name',    $first_name )
+            ->bindString( ':last_name',     $last_name )
+            ->bindString( ':email',         $email )
+            ->bindString( ':username',      $username )
+            ->bindString( ':pass',          self::hashPassword( $pass ) )
+            ->bindDate  ( ':date_of_birth', $date_of_birth )
+            ->bindInt   ( ':gender',        $gender );
 
         $success = $query->execute();
 
@@ -143,6 +152,31 @@ class model_user extends model
 		$_SESSION['user'] = $user;
 		return true;
 				
+	}
+	
+	public static function uniqueEntityExists( $value, $field )
+	{
+		
+		$sql = '
+			SELECT * 
+			FROM user 
+			WHERE ' . $field . ' = :value
+		';
+		
+		$query = db::prepare( $sql );
+		$query
+			->bindString( ':value', $value )
+			->execute();
+		
+		$row = $query->fetch();
+		
+		if( empty( $row ) )
+		{
+			return false;
+		}
+		
+		return true;
+	
 	}
 	
 	private static function hashPassword( $password )

@@ -54,6 +54,7 @@ class class_finder
 			switch( $frags[1] )
 			{
 				case 'admin':  require_once __DIR__ . '/../handler/admin/' . $name . '.php'; break;
+				case 'new':    require_once __DIR__ . '/../handler/new/' . $name . '.php';   break;
 				default:       require_once __DIR__ . '/../handler/' . $name . '.php';
 			}
 		}
@@ -66,8 +67,19 @@ class class_finder
 
 	private static function getActionClass( $name, $frags )
 	{
-	
-		require_once __DIR__ . '/../action/' . $name . '.php';
+
+		if( isset( $frags[1] ) )
+		{ 
+			switch( $frags[1] )
+			{
+				case 'new':    require_once __DIR__ . '/../action/new/' . $name . '.php';   break;
+				default:       require_once __DIR__ . '/../action/' . $name . '.php';
+			}
+		}
+		else
+		{
+			require_once __DIR__ . '/../action/action.php';
+		}
 	
 	}
 

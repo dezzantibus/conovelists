@@ -1,15 +1,17 @@
 <?php
 
-class layout_admin_register_body extends layout
+class layout_new_story_body extends layout
 {
 
-	function __construct( data_statistics $footerStats, data_user $userData )
+	function __construct( data_statistics $footerStats, data_story $storyData )
 	{
 
 		$this->addChild( new layout_main_navigation() );
 		
-		$this->addChild( new layout_hero( 'User Registration', 'Join us!', 'register_header_bg' ) );
+		$this->addChild( new layout_hero( 'New story', 'Start a new adventure!', 'new_story_header_bg' ) );
 		
+		/*
+		tutta roba da riscrivere che questa e' la registrazione
 		$form = $this->addChild( new layout_form( 
 			'/action/register.html', 
 			'form_register', 
@@ -25,6 +27,7 @@ class layout_admin_register_body extends layout
 		$form->addChild( new layout_form_password( 'password', 'Password' ) );
 		
 		$form->addChild( new layout_form_password( 'confirm_password', 'Confirm Password' ) );
+		*/
 				
 		$this->addChild( new layout_footer( $footerStats ) );
 		

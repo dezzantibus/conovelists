@@ -56,7 +56,7 @@ class layout_menu extends layout
 				{
 				
 					echo
-					'<li><a href="about.html"><i class="icon-user"></i>My profile</a></li>',
+					'<li><a href="/admin/my-profile.html"><i class="icon-user"></i>My profile</a></li>',
 					'<li class="submenu">',
 						'<a href="#"><i class="icon-bookmark"></i>Bookmarks<b class="caret"></b></a>',
 						'<ul class="submenu-list">';
@@ -84,6 +84,11 @@ class layout_menu extends layout
 						'</ul>',		
 					'</li>';
 				
+				}
+				else
+				{
+					echo
+					'<li><a href="/admin/register.html"><i class="icon-user"></i>Register</a></li>';
 				}
 				
 				echo

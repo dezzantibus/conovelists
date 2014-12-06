@@ -20,7 +20,7 @@ class action_login extends action
 			$bookmarks = new data_array();
 		}
 		
-		$this->returnToPage( $_POST['return'] );
+		header( 'Location: ' . $_POST['success_url'] );
 
     }
 
