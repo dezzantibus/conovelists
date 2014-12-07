@@ -23,9 +23,10 @@ class handler_new_story extends handler
 			$bookmarks = new data_array();
 		}
 
-		$storyData = new data_story();
+		$storyData   = new data_story();
+		$chapterData = new data_chapter();
 
-        $page = new layout_new_story( $categories, $bookmarks, $footerStats, $storyData );
+        $page = new layout_new_story( $categories, $bookmarks, $footerStats, $storyData, $chapterData );
         $page->render();
 
     }

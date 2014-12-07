@@ -1,52 +1,32 @@
 /* CSS Document */
 
-.homepage_header_bg{
-	background-image:url(/img/header/homepage.jpg);
-}
+.homepage_header_bg{ background-image:url(/img/header/homepage.jpg); }
 
-.about_header_bg{
-	background-image:url(/img/header/about.jpg);
-}
+.about_header_bg{ background-image:url(/img/header/about.jpg); }
 
-.contact_header_bg{
-	background-image:url(/img/header/contact.jpg);
-}
+.contact_header_bg{ background-image:url(/img/header/contact.jpg); }
 
-.category1_header_bg{
-	background-image:url(/img/header/scifi.jpg);
-}
+.category1_header_bg{ background-image:url(/img/header/scifi.jpg); }
 
-.category2_header_bg{
-	background-image:url(/img/header/romance.jpg);
-}
+.category2_header_bg{ background-image:url(/img/header/romance.jpg); }
 
-.category3_header_bg{
-	background-image:url(/img/header/thriller.jpg);
-}
+.category3_header_bg{ background-image:url(/img/header/thriller.jpg); }
 
-.category4_header_bg{
-	background-image:url(/img/header/fantasy.jpg);
-}
+.category4_header_bg{ background-image:url(/img/header/fantasy.jpg); }
 
-.category5_header_bg{
-	background-image:url(/img/header/horror.jpg);
-}
+.category5_header_bg{ background-image:url(/img/header/horror.jpg); }
 
-.category6_header_bg{
-	background-image:url(/img/header/adventure.jpg);
-}
+.category6_header_bg{ background-image:url(/img/header/adventure.jpg); }
 
-.faq_header_bg{
-	background-image:url(/img/header/faq.jpg);
-}
+.faq_header_bg{ background-image:url(/img/header/faq.jpg); }
 
-.tnc_header_bg{
-	background-image:url(/img/header/tnc.jpg);
-}
+.tnc_header_bg{ background-image:url(/img/header/tnc.jpg); }
 
-.register_header_bg{
-	background-image:url(/img/header/register.jpg);
-}
+.register_header_bg{ background-image:url(/img/header/register.jpg); }
+
+.newstory_header_bg{ background-image:url(/img/header/new-story.jpg); }
+
+.newchapter_header_bg{ background-image:url(/img/header/new-chapter.jpg); }
 
 #menu>ul{
 	white-space:normal;
@@ -67,6 +47,12 @@
 
 form.myform .btn-group{
 	margin:-15px 0 15px 0;
+}
+
+form.myform select{
+	padding-top:0;
+	padding-bottom:0;
+	line-height: 42px;
 }
 
 .message{
