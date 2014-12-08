@@ -15,6 +15,9 @@ class data_story extends data
 	
 	public $created;
 
+	/** @var $category data_category */
+	public $category;
+
     public function __construct( $data=null )
     {
 
@@ -39,6 +42,15 @@ class data_story extends data
 		}
 		
 		return $this->dateForDisplay( $this->created );
+		
+	}
+	
+	public function getLink()
+	{
+		
+		return '/' . $this->encode_id( $this->id ) . 
+		 	   '/' . $this->clean_for_url( $this->category->name ) . 
+			   '/' . $this->clean_for_url( $this->title ) . '.html';
 		
 	}
 

@@ -20,17 +20,17 @@ class model_story extends model
 
         $sql = '
             INSERT INTO `story`
-                ( category_id, first_chapter_id, brief )
+                ( category_id, first_chapter_id, title, brief )
             VALUES
-                ( :category_id, :first_chapter_id, :brief )
+                ( :category_id, :first_chapter_id, :title, :brief )
         ';
 
         $query = db::prepare( $sql );
         $query
             ->bindInt   ( ':category_id',      $story->category_id )
             ->bindint   ( ':first_chapter_id', $story->first_chapter_id )
-            ->bindString( ':brief',            $story->brief)
-			->execute();
+            ->bindString( ':title',            $story->title )
+            ->bindString( ':brief',            $story->brief );
 
         $success = $query->execute();
 
@@ -50,6 +50,43 @@ class model_story extends model
 
     }
 
+    static function update( data_story $story )
+    {
+
+        $sql = '
+            UPDATE `story`
+			SET category_id		 = :category_id,
+				first_chapter_id = :first_chapter_id,
+				title			 = :title,
+				brief			 = :brief
+			WHERE id = :id
+        ';
+
+        $query = db::prepare( $sql );
+        $query
+            ->bindInt   ( ':category_id',      $story->category_id )
+            ->bindint   ( ':first_chapter_id', $story->first_chapter_id )
+            ->bindString( ':title',            $story->title )
+            ->bindString( ':brief',            $story->brief)
+            ->bindInt   ( ':id',               $story->id );
+
+        $success = $query->execute();
+
+        if( $success )
+        {
+            $id = db::lastInsertId();
+            return self::getById( $id );
+        }
+        else
+        {
+            message::addError(
+                'There has been an error, please try again. If the problem persists please contact support.',
+                var_export( $query->getErrors(), 1 )
+            );
+            return null;
+        }
+
+    }
 
     static function getById( $id )
     {
