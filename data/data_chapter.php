@@ -39,15 +39,26 @@ class data_chapter extends data
     public function getLink()
     {
 
-        $id = $this->encode_id( $this->id );
-
         $story_id = $this->encode_id( $this->story_id );
+		
+        $story = $this->clean_for_url( $this->story->title );
 
-        $story = $this->clean_for_url( $this->story );
+		if( $ythis->level > 1 )
+		{
+			
+			$id = $this->encode_id( $this->id );
+			
+	        $chapter = $this->clean_for_url( $this->title );
 
-        $chapter = $this->clean_for_url( $this->title );
+	        return '/' . $story_id . '-' . $id . '/' . $this->story->category->url . '/' . $story . '/' . $chapter . '.html';
+		
+		}
 
-        return '/' . $story_id . '-' . $id . '/' . $story . '/' . $chapter . '.html';
+		/**
+		 * If the chapter is the first one of the story use the story link to avoid
+		 * multiple urls for the same content and make google happier
+		 */
+		return '/' . $story_id . '/' . $this->story->category->url . '/' . $story . '.html';
 
     }
 
