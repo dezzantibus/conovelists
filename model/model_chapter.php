@@ -20,7 +20,7 @@ class model_chapter extends model
             ->bindInt   ( ':user_id',   $chapter->user_id )
             ->bindint   ( ':level', 	$chapter->level )
             ->bindString( ':title',     $chapter->title )
-            ->bindString( ':body',      $chapter->body );
+            ->bindString( ':body',      $this->processBodyToSave( $chapter->body ) );
 
         $success = $query->execute();
 
@@ -61,7 +61,7 @@ class model_chapter extends model
             ->bindInt   ( ':user_id',   $chapter->user_id )
             ->bindInt   ( ':level', 	$chapter->level )
             ->bindString( ':title',     $chapter->title )
-            ->bindString( ':body',      $chapter->body)
+            ->bindString( ':body',      $this->processBodyToSave( $chapter->body ) )
             ->bindInt   ( ':id',        $chapter->id );
 
         $success = $query->execute();
@@ -105,5 +105,20 @@ class model_chapter extends model
         return new data_chapter( $row );
 
     }
+	
+	private static function processBodyToSave( $text )
+	{
+		
+		$r = chr(0x0D);
+		$n = chr(0x0A);
+		
+		$text = strip_tags( $text );
+		$text = str_replace( $r, $n, $text );
+		$text = str_replace( $n, '</p><p>', $text );
+		$text = str_replace( '<p></p>', '', $text );
+		
+		return '<p>' . $text . '</p>';
+		
+	}
 
 }
