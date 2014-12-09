@@ -22,6 +22,7 @@ class action_new_story extends action
 			$chapterData 			= new data_chapter( $this->data );
 			$chapterData->story_id  = $storyData->id;
 			$chapterData->parent_id = 0;
+			$chapterData->level 	= 1;
 			$chapterData 			= model_chapter::create( $chapterData );
 			
 			$storyData->first_chapter_id = $chapterData->id;
@@ -46,7 +47,7 @@ class action_new_story extends action
 		{
 			message::addError( 'The Brief is a required field' );
 		}
-		elseif( strlen( $this->data['brief'] < 150 ) )
+		elseif( strlen( $this->data['brief'] ) < 150 )
 		{
 			message::addError( 'The Brief must be at least 150 characters' );
 		}
@@ -55,11 +56,11 @@ class action_new_story extends action
 		{
 			message::addError( 'The Body is a required field' );
 		}
-		elseif( strlen( $this->data['body'] < 1000 ) )
+		elseif( strlen( $this->data['body'] ) < 1000 )
 		{
 			message::addError( 'The Body must be at least 1000 characters' );
 		}
-		elseif( strlen( $this->data['body'] > 64000 ) )
+		elseif( strlen( $this->data['body'] ) > 64000 )
 		{
 			message::addError( 'The Body is over 64000 characters' );
 		}		
@@ -91,7 +92,6 @@ class action_new_story extends action
 
         $page = new layout_new_story( $categories, $bookmarks, $footerStats, $storyData, $chapterData );
         $page->render();
-
 		
 	}
 	

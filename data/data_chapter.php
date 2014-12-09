@@ -47,7 +47,7 @@ class data_chapter extends data
 
         $chapter = $this->clean_for_url( $this->title );
 
-        return "/$story_id-$id/$story/$chapter.html";
+        return '/' . $story_id . '-' . $id . '/' . $story . '/' . $chapter . '.html';
 
     }
 

@@ -74,6 +74,7 @@ class class_finder
 			switch( $frags[1] )
 			{
 				case 'new':    require_once __DIR__ . '/../action/new/' . $name . '.php';   break;
+				case 'admin':  require_once __DIR__ . '/../action/admin/' . $name . '.php'; break;
 				default:       require_once __DIR__ . '/../action/' . $name . '.php';
 			}
 		}

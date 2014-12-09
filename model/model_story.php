@@ -3,18 +3,6 @@
 class model_story extends model
 {
 
-
-    public $id;
-
-    public $category_id;
-
-    public $first_chapter_id;
-
-    public $title;
-
-    public $brief;
-
-
     static function create( data_story $story )
     {
 
@@ -74,8 +62,7 @@ class model_story extends model
 
         if( $success )
         {
-            $id = db::lastInsertId();
-            return self::getById( $id );
+            return self::getById( $story->id );
         }
         else
         {

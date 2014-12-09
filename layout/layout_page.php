@@ -71,7 +71,7 @@ abstract class layout_page extends layout
 				'<div class="modal-body"> ', 
 					'<div class="box">',
 						'<div class="form loginBox">',
-							'<form class="myform" method="post" action="/action/login.html" accept-charset="UTF-8">',
+							'<form class="myform" method="post" action="/action/admin/login.html" accept-charset="UTF-8">',
 								'<input type="hidden" name="success_url" value="', $_SERVER['REQUEST_URI'], '">',
 								'<input type="hidden" name="error_url" value="', $_SERVER['REQUEST_URI'], '">',
 

@@ -49,7 +49,7 @@ class data_story extends data
 	{
 		
 		return '/' . $this->encode_id( $this->id ) . 
-		 	   '/' . $this->clean_for_url( $this->category->name ) . 
+		 	   '/' . $this->category->url . 
 			   '/' . $this->clean_for_url( $this->title ) . '.html';
 		
 	}

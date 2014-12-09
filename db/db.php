@@ -18,22 +18,22 @@ class db
     {
         if( is_null( self::$connection ) )
         {
-            static::$connection = new PDO( 'mysql:host=' . self::HOST . ';dbname=' . self::SCHEMA, self::USER, self::PASS );
+            self::$connection = new PDO( 'mysql:host=' . self::HOST . ';dbname=' . self::SCHEMA, self::USER, self::PASS );
         }
     }
 
     public static function beginTransaction()
     {
-        static::connect();
-        static::$connection->beginTransaction();
+        self::connect();
+        self::$connection->beginTransaction();
     }
 
     public static function commit()
     {
-        static::connect();
-        if( ! static::$connection->commit() )
+        self::connect();
+        if( ! self::$connection->commit() )
         {
-            static::$connection->rollBack();
+            self::$connection->rollBack();
             message::addError(
                 'Database error, please contact support',
                 'Roll back - ' . var_export( static::$connection, 1 )
@@ -43,15 +43,14 @@ class db
 
     public static function prepare( $sql )
     {
-        static::connect();
-        $result = static::$connection->prepare( $sql );
+        self::connect();
+        $result = self::$connection->prepare( $sql );
         return new db_statement( $result );
     }
 
     public static function lastInsertId()
     {
-        static::connect();
-        return static::$connection->lastInsertId();
+        return self::$connection->lastInsertId();
     }
 
 }

@@ -52,7 +52,7 @@ class layout_menu extends layout
 					'</ul>',		
 				'</li>';
 				
-				if( $_SESSION['user'] instanceof data_user )
+				if( isset( $_SESSION['user']->id ) )
 				{
 				
 					echo
