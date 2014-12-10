@@ -143,4 +143,46 @@ class model_story extends model
 
     }
 
+    public static function getLatest( $number=data_category::STORIES_PER_PAGE )
+    {
+
+        $result = cache_story::retrieve( 'latest' );
+
+        if( empty( $result ) )
+        {
+
+            $sql = '
+                SELECT *
+                FROM `story`
+                LIMIT :number
+                ORDER BY id DESC
+            ';
+
+            $query = db::prepare( $sql );
+            $query
+                ->bindInt( ':number', $number )
+                ->execute();
+
+            $result = new data_array();
+
+            while( $row = $query->fetch() )
+            {
+                $item           = new data_story( $row );
+                $item->user     = model_user::getByChapterId( $item->first_chapter_id );
+                $item->category = model_category::getById( $item->category_id );
+                $result->add( $item );
+            }
+
+            cache_story::save( 'latest', 300 );
+
+        }
+        else
+        {
+            $result = unserialize( $result );
+        }
+
+        return $result;
+
+    }
+
 }

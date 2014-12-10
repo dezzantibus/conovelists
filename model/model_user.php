@@ -77,9 +77,7 @@ class model_user extends model
 
         }
 
-
         return new data_user( $row );
-
     }
 	
 	public static function login( $email, $pass )
@@ -178,12 +176,41 @@ class model_user extends model
 		return true;
 	
 	}
-	
+
+    public static function getByChapterId( $chapter_id )
+    {
+
+        $row = cache_user::retrieve( 'chapter_id-' . $chapter_id );
+
+        if( empty( $row ) )
+        {
+
+            $sql = '
+                SELECT us.*
+                FROM `user` us
+                    INNER JOIN chapter ch
+                        ON ch.user_id = us.id
+                WHERE ch.id = :chapter_id
+            ';
+
+            $query = db::prepare( $sql );
+            $query
+                ->bindInt( ':chapter_id', $chapter_id )
+                ->execute();
+
+            $row = $query->fetch();
+
+            cache_user::save( 'chapter_id-' . $chapter_id, $row, 0 );
+
+        }
+
+        return new data_user( $row );
+
+    }
+
 	private static function hashPassword( $password )
 	{
-
 		return hash( 'sha256', 'zante-' . $password . '-zante' );
-
 	}
 
 }

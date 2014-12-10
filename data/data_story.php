@@ -15,8 +15,11 @@ class data_story extends data
 	
 	public $created;
 
-	/** @var $category data_category */
-	public $category;
+    /** @var $category data_category */
+    public $category;
+
+    /** @var $user data_user */
+    public $user;
 
     public function __construct( $data=null )
     {

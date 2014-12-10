@@ -3,10 +3,10 @@
 class layout_homepage_content extends layout
 {
 
-	function __construct()
+	function __construct( data_array $stories )
 	{
 		
-		$this->addChild( new layout_homepage_highlights() );
+		$this->addChild( new layout_homepage_highlights( $stories ) );
 		
 		$this->addChild( new layout_popular() );
 		

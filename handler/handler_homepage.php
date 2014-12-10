@@ -22,8 +22,10 @@ class handler_homepage extends handler
 			$bookmarks = new data_array();
 		}
 
+        $stories = model_story::getLatest();
+
         /* display data */
-		$page = new layout_homepage( $categories, $bookmarks, $footerStats );
+		$page = new layout_homepage( $categories, $bookmarks, $footerStats, $stories );
         $page->render();
 
     }
