@@ -6,6 +6,8 @@ class layout_menu extends layout
     private $categories;
 	
 	private $bookmarks;
+	
+	private $link;
 
 	function __construct( data_array $categories, data_array $bookmarks )
 	{
@@ -13,6 +15,8 @@ class layout_menu extends layout
         $this->categories = $categories;
 
         $this->bookmarks = $bookmarks;
+		
+		$this->link = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
 	}
 	
@@ -46,10 +50,10 @@ class layout_menu extends layout
 				'<li class="submenu">',
 					'<a href="#"><i class="icon-share"></i>Share<b class="caret"></b></a>',
 					'<ul class="submenu-list">',
-						'<li><a href="post-image.html"><i class="icon-facebook"></i>Facebook</a></li>',
-						'<li><a href="post-audio.html"><i class="icon-twitter"></i>Twitter</a></li>',
-						'<li><a href="post-video.html"><i class="icon-googleplus"></i>Google+</a></li>',
-					'</ul>',		
+						'<li><a href="https://www.facebook.com/sharer/sharer.php?u=', $this->link, '" onclick="window.open(\'https://www.facebook.com/sharer/sharer.php?u=', $this->link, '\', \'newwindow\', \'width=600, height=229\'); return false;"><i class="icon-facebook"></i>Facebook</a></li>',
+						'<li><a href="https://twitter.com/home?status=', $this->link, '" onclick="window.open(\'https://twitter.com/home?status=', $this->link, '\', \'newwindow\', \'width=600, height=229\'); return false;"><i class="icon-twitter"></i>Twitter</a></li>',
+						'<li><a href="https://plus.google.com/share?url=', $this->link, '" onclick="window.open(\'https://plus.google.com/share?url=', $this->link, '\', \'newwindow\', \'width=600, height=450\'); return false;"><i class="icon-googleplus"></i>Google+</a></li>',
+					'</ul>',
 				'</li>';
 				
 				if( isset( $_SESSION['user']->id ) )
