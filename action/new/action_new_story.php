@@ -20,7 +20,8 @@ class action_new_story extends action
 			$storyData = model_story::create( $storyData );
 			
 			$chapterData 			= new data_chapter( $this->data );
-			$chapterData->story_id  = $storyData->id;
+            $chapterData->user_id   = $_SESSION['user']->id;
+            $chapterData->story_id  = $storyData->id;
 			$chapterData->parent_id = 0;
 			$chapterData->level 	= 1;
 			$chapterData 			= model_chapter::create( $chapterData );

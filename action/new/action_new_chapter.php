@@ -16,8 +16,9 @@ class action_new_story extends action
 		else
 		{
 			
-			$chapterData = new data_chapter( $this->data );
-			$chapterData = model_chapter::create( $chapterData );
+			$chapterData          = new data_chapter( $this->data );
+            $chapterData->user_id = $_SESSION['user']->id;
+			$chapterData          = model_chapter::create( $chapterData );
 						
 			header( 'Location: ' . $chapterData->getLink() );
 			
