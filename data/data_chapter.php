@@ -13,6 +13,7 @@ class data_chapter extends data
 
     public $level;
 
+    /** @var  $story data_story */
     public $story;
 
     public $title;
