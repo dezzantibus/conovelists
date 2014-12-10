@@ -70,6 +70,9 @@
 			fwrite($fp, utf8_encode($testo));
 		}
 
-		*/
+		
 		
 	}
+	
+	*/
+	
