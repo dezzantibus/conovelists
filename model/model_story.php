@@ -154,8 +154,8 @@ class model_story extends model
             $sql = '
                 SELECT *
                 FROM `story`
-                LIMIT :number
                 ORDER BY id DESC
+                LIMIT :number
             ';
 
             $query = db::prepare( $sql );
