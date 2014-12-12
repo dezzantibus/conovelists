@@ -27,6 +27,7 @@ abstract class layout_page extends layout
 					'<link rel="stylesheet" href="/css/animate.min.css">',
 					'<link rel="stylesheet" href="/css/mine.css">',
 					'<link rel="shortcut icon" href="/img/ico/32.png" sizes="32x32" type="image/png"/>',
+					'<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>',
 					'<link rel="apple-touch-icon-precomposed" href="/img/ico/60.png" type="image/png"/>',
 					'<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/ico/72.png" type="image/png"/>',
 					'<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/img/ico/120.png" type="image/png"/>',
