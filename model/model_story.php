@@ -173,12 +173,8 @@ class model_story extends model
                 $result->add( $item );
             }
 
-            cache_story::save( 'latest', 300 );
+            cache_story::save( 'latest', $result, 300 );
 
-        }
-        else
-        {
-            $result = unserialize( $result );
         }
 
         return $result;

@@ -3,7 +3,7 @@
 class model_chapter extends model
 {
 
-    static function create( data_chapter $chapter )
+    public static function create( data_chapter $chapter )
     {
 
         $sql = '
@@ -20,7 +20,7 @@ class model_chapter extends model
             ->bindInt   ( ':user_id',   $chapter->user_id )
             ->bindint   ( ':level', 	$chapter->level )
             ->bindString( ':title',     $chapter->title )
-            ->bindString( ':body',      $this->processBodyToSave( $chapter->body ) );
+            ->bindString( ':body',      self::processBodyToSave( $chapter->body ) );
 
         $success = $query->execute();
 
@@ -40,7 +40,7 @@ class model_chapter extends model
 
     }
 
-    static function update( data_chapter $chapter )
+    public static function update( data_chapter $chapter )
     {
 
         $sql = '
@@ -61,7 +61,7 @@ class model_chapter extends model
             ->bindInt   ( ':user_id',   $chapter->user_id )
             ->bindInt   ( ':level', 	$chapter->level )
             ->bindString( ':title',     $chapter->title )
-            ->bindString( ':body',      $this->processBodyToSave( $chapter->body ) )
+            ->bindString( ':body',      self::processBodyToSave( $chapter->body ) )
             ->bindInt   ( ':id',        $chapter->id );
 
         $success = $query->execute();
@@ -81,12 +81,12 @@ class model_chapter extends model
 
     }
 
-    static function getById( $id )
+    public static function getById( $id )
     {
 
-        $row = cache_chapter::retrieve( $id );
+        $result = cache_chapter::retrieve( $id );
 
-        if( empty( $row ) )
+        if( empty( $result ) )
         {
 
             $sql = 'SELECT * FROM `chapter` where id = :id';
@@ -96,17 +96,43 @@ class model_chapter extends model
 				->bindInt( ':id', $id )
 				->execute();
 
-            $row = $query->fetch();
+            $result = new data_chapter( $query->fetch() );
 
-            cache_chapter::save( $id, $row, 0 );
+            cache_chapter::save( $id, $result, 0 );
 
         }
 
-        return new data_chapter( $row );
+        return $result;
 
     }
-	
-	private static function processBodyToSave( $text )
+
+    public static function getPopular( $number=3, $days=7 )
+    {
+
+        $result = cache_chapter::retrieve( 'popular-' .$days . '-' . $number );
+
+        if( empty( $result ) )
+        {
+
+            $ids = model_view::getPopularChapterIds( $number, $days );
+
+            $result = new data_array();
+
+            foreach( $ids->getData() as $item )
+            {
+                $result->add( self::getById( $item->category_id ) );
+            }
+
+            cache_chapter::save( 'popular-' .$days . '-' . $number, $result, 600 );
+
+        }
+
+        return $result;
+
+    }
+
+
+    private static function processBodyToSave( $text )
 	{
 		
 		$r = chr(0x0D);
