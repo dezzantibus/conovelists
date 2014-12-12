@@ -11,17 +11,17 @@
 abstract class data
 {
 
-    protected function encode_id( $id )
+    public static function encode_id( $id )
     {
         return base_convert( $id, 10, 36 );
     }
 
-    protected function decode_id( $id )
+    public static function decode_id( $id )
     {
         return base_convert( $id, 36, 10 );
     }
 
-    protected function clean_for_url( $string )
+    protected static function clean_for_url( $string )
     {
 
         $search  = array( ' ', '&', '%', '?', '$', '+' );
@@ -31,7 +31,7 @@ abstract class data
 
     }
 	
-	protected function dateForDisplay( $in )
+	protected static function dateForDisplay( $in )
 	{
 		return date( 'jS F, Y', strtotime( $in ) );
 	}

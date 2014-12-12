@@ -3,12 +3,12 @@
 abstract class handler
 {
 
-    public function run()
+    protected $data;
+
+    function __construct()
     {
 
-        // get data
-
-        // build layout
+        $this->data = $_GET;
 
     }
 
