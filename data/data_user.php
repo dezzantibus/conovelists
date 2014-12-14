@@ -25,6 +25,10 @@ class data_user extends data
 
     public $gender;
 
+    public $catchphrase;
+
+    public $created;
+
     public function __construct( $data=null )
     {
 
@@ -37,7 +41,9 @@ class data_user extends data
             if( isset( $data['email'] ) )         $this->email         = $data['email'];
             if( isset( $data['pass'] ) )          $this->pass          = $data['pass'];
             if( isset( $data['date_of_birth'] ) ) $this->date_of_birth = $data['date_of_birth'];
-            if( isset( $data['gender'] ) )        $this->gender        = $data['date_of_birth'];
+            if( isset( $data['gender'] ) )        $this->gender        = $data['gender'];
+            if( isset( $data['catchphrase'] ) )   $this->catchphrase   = $data['catchphrase'];
+            if( isset( $data['created'] ) )       $this->created       = $data['created'];
         }
 
     }

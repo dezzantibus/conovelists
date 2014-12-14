@@ -3,7 +3,7 @@
 class model_view extends model
 {
 
-    public static function log( $user_id, $chapter_id )
+    public static function logUserView( $user_id, $chapter_id )
     {
 
         $sql = '

@@ -37,7 +37,6 @@ class model_category extends model
 
     }
 
-
     static function getById( $id )
     {
 

@@ -31,7 +31,7 @@ class layout_homepage_highlights extends layout
 				'<div class="post-date">',
 					$story->getDate(), ' | <a href="">', $story->user->username , '</a> <!--span><a href="">11 Comments</a></span-->',
 				'</div>',	
-				'<h2><a href="post-typography.html">', $story->title, '</a></h2>',
+				'<h2><a href="', $story->getLink(), '">', $story->title, '</a></h2>',
 				'<p>', $story->brief, '<a class="" href="', $story->getLink(), '">Read story</a>',
 				'</p>',
 			'</article>';

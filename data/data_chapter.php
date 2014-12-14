@@ -13,12 +13,17 @@ class data_chapter extends data
 
     public $level;
 
-    /** @var  $story data_story */
+    /** @var $story data_story */
     public $story;
 
     public $title;
 
     public $body;
+	
+	public $created;
+
+	/** @var $user data_user */
+    public $user;
 
     public function __construct( $data=null )
     {
@@ -33,6 +38,7 @@ class data_chapter extends data
             if( isset( $data['story'] ) )     $this->story     = $data['story'];
             if( isset( $data['title'] ) )     $this->title     = $data['title'];
             if( isset( $data['body'] ) )      $this->body      = $data['body'];
+            if( isset( $data['created'] ) )   $this->created   = $data['created'];
         }
 
     }
