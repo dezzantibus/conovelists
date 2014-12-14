@@ -23,9 +23,11 @@ class handler_homepage extends handler
 		}
 
         $stories = model_story::getLatest();
+		
+		$popular = model_chapter::getPopular();
 
         /* display data */
-		$page = new layout_homepage( $categories, $bookmarks, $footerStats, $stories );
+		$page = new layout_homepage( $categories, $bookmarks, $footerStats, $stories, $popular );
         $page->render();
 
     }

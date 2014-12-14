@@ -10,6 +10,11 @@ class data_array extends data
         $this->clear();
     }
 
+    public function count()
+    {
+        return count( $this->array );
+    }
+
     public function clear()
     {
         $this->array = array();

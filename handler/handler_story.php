@@ -40,11 +40,16 @@ class handler_story extends handler
 			/* data for non-logged in users */
 			$bookmarks = new data_array();
 			model_view::logUserView( 0, $chapter_id );
-		}		
+		}
 		
+		$popular = model_chapter::getPopular();
+		
+		$branches = model_chapter::getBranches( $chapter_id );		
+
+		$comments = model_comment::getForChapterId( $chapter_id );		
 
         /* display data */
-	    $page = new layout_story( $categories, $bookmarks, $footerStats, $chapter );
+	    $page = new layout_story( $categories, $bookmarks, $footerStats, $chapter, $popular, $branches, $comments );
         $page->render();
 
     }

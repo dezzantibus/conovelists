@@ -3,7 +3,14 @@
 class layout_story_body extends layout
 {
 
-	function __construct( data_category $category, data_statistics $footerStats, data_chapter $chapter )
+	function __construct( 
+		data_category   $category, 
+		data_statistics $footerStats, 
+		data_chapter    $chapter, 
+		data_array      $popular, 
+		data_array      $branches, 
+		data_array      $comments 
+	)
 	{
 		
 		$this->addChild( new layout_main_navigation() );
@@ -14,7 +21,7 @@ class layout_story_body extends layout
 			'category' . $chapter->story->category->id . '_header_bg' 
 		) );
 		
-		$this->addChild( new layout_story_content( $chapter ) );
+		$this->addChild( new layout_story_content( $chapter, $popular, $branches, $comments ) );
 		
 		$this->addChild( new layout_footer( $footerStats ) );
 		

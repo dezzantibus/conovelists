@@ -24,7 +24,7 @@ class data_chapter extends data
 
 	/** @var $user data_user */
     public $user;
-
+	
     public function __construct( $data=null )
     {
 

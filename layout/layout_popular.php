@@ -5,13 +5,9 @@ class layout_popular extends layout
 	
 	private $popular;
 
-	function __construct()
+	function __construct( data_array $popular )
 	{
-		$this->popular = new data_array();
-				$this->popular->add( new data_user )
-			 		  ->add( new data_user )
-			 		  ->add( new data_user );
-
+		$this->popular = $popular;
 	}
 	
 	public function render()

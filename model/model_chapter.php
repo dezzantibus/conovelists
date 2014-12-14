@@ -120,7 +120,7 @@ class model_chapter extends model
 
             foreach( $ids->getData() as $item )
             {
-                $result->add( self::getById( $item['category_id'] ) );
+                $result->add( self::getById( $item['chapter_id'] ) );
             }
 
             cache_chapter::save( 'popular-' .$days . '-' . $number, $result, 600 );
@@ -131,6 +131,31 @@ class model_chapter extends model
 
     }
 
+	public static function getBranches( $parent_id )
+	{
+		
+		$sql = '
+			SELECT *
+			FROM `chapter`
+			WHERE parent_id = :parent_id
+			ORDER BY created ASC
+		';
+		
+		$query = db::prepare( $sql );
+		$query
+			->bindInt( ':parent_id', $parent_id )
+			->execute();
+
+		$result = new data_array();
+		
+		while( $row = $query->fetch() )
+		{
+			$result->add( new data_chapter( $row ) );
+		}
+		
+		return $result;
+		
+	}
 
     private static function processBodyToSave( $text )
 	{
