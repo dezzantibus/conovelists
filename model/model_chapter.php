@@ -81,7 +81,7 @@ class model_chapter extends model
 
     }
 
-    public static function getById( $id )
+    public static function getById( $id, $no_body=false )
     {
 
         $result = cache_chapter::retrieve( $id );
@@ -102,6 +102,11 @@ class model_chapter extends model
 
         }
 
+        if( $no_body )
+        {
+            $result->body = null;
+        }
+
         return $result;
 
     }
@@ -120,7 +125,7 @@ class model_chapter extends model
 
             foreach( $ids->getData() as $item )
             {
-                $result->add( self::getById( $item['chapter_id'] ) );
+                $result->add( self::getById( $item['chapter_id'], true ) );
             }
 
             cache_chapter::save( 'popular-' .$days . '-' . $number, $result, 600 );
@@ -133,9 +138,9 @@ class model_chapter extends model
 
 	public static function getBranches( $parent_id )
 	{
-		
+
 		$sql = '
-			SELECT *
+			SELECT id, parent_id, story_id, user_id, `level`, title, created
 			FROM `chapter`
 			WHERE parent_id = :parent_id
 			ORDER BY created ASC

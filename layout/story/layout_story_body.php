@@ -3,9 +3,8 @@
 class layout_story_body extends layout
 {
 
-	function __construct( 
-		data_category   $category, 
-		data_statistics $footerStats, 
+	function __construct(
+		data_statistics $footerStats,
 		data_chapter    $chapter, 
 		data_array      $popular, 
 		data_array      $branches, 

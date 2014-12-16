@@ -4,8 +4,7 @@ class layout_story extends layout_page
 {
 
     function __construct( 
-		data_category   $category, 
-		data_array      $categories, 
+		data_array      $categories,
 		data_array      $bookmarks, 
 		data_statistics $footerStats, 
 		data_chapter    $chapter, 
@@ -15,9 +14,9 @@ class layout_story extends layout_page
 	)
     {
 
-        $this->title = $category->name;
+        $this->title = $chapter->title;
 
-        $this->description = $category->description;
+        $this->description = $chapter->story->brief;
 		
 		$this->addChild( new layout_menu( $categories, $bookmarks ) );
 
