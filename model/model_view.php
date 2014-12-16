@@ -42,8 +42,8 @@ class model_view extends model
 
             $query = db::prepare( $sql );
             $query
-                ->bindInt( ':user_id',    $user_id )
-                ->bindInt( ':chapter_id', $chapter_id )
+                ->bindInt( ':days',   $days )
+                ->bindInt( ':number', $number )
                 ->execute();
 
             $result = new data_array();

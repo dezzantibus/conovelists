@@ -7,8 +7,11 @@ abstract class handler
 
     function __construct()
     {
-
         $this->data = $_GET;
+    }
+
+    public function run()
+    {
 
     }
 
