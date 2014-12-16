@@ -22,8 +22,10 @@ class handler_faq extends handler
 			$bookmarks = new data_array();
 		}
 
+        $popular = model_chapter::getPopular();
+
         /* display data */
-		$page = new layout_faq( $categories, $bookmarks, $footerStats );
+		$page = new layout_faq( $categories, $bookmarks, $footerStats, $popular );
         $page->render();
 
     }

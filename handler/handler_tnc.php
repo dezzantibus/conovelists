@@ -22,8 +22,10 @@ class handler_tnc extends handler
 			$bookmarks = new data_array();
 		}
 
+        $popular = model_chapter::getPopular();
+
         /* display data */
-		$page = new layout_tnc( $categories, $bookmarks, $footerStats );
+		$page = new layout_tnc( $categories, $bookmarks, $footerStats, $popular );
         $page->render();
 
     }

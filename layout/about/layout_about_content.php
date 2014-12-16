@@ -3,12 +3,12 @@
 class layout_about_content extends layout
 {
 
-	function __construct()
+	function __construct( data_array $popular )
 	{
 		
 		$this->addChild( new layout_about_data() );
 
-        $this->addChild( new layout_popular() );
+        $this->addChild( new layout_popular( $popular ) );
 		
 	}
 	

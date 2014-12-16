@@ -18,6 +18,7 @@ else
 {
 	$handler = 'handler_homepage';
 }
+
 /** @var handler $page */
 $page = new $handler;
 

@@ -3,7 +3,7 @@
 class layout_about extends layout_page
 {
 
-    function __construct( data_array $categories, data_array $bookmarks, data_statistics $footerStats )
+    function __construct( data_array $categories, data_array $bookmarks, data_statistics $footerStats, data_array $popular )
     {
 
         $this->title = 'Co-Novelists';
@@ -14,7 +14,7 @@ class layout_about extends layout_page
 		
 		$this->addChild( new layout_menu( $categories, $bookmarks ) );
 
-		$this->addChild( new layout_about_body( $footerStats ) );	
+		$this->addChild( new layout_about_body( $footerStats, $popular ) );
 
     }
 
