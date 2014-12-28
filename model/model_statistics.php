@@ -21,6 +21,47 @@ class model_statistics extends model
 		return $result;
 
     }
+
+    /**
+     * @TODO THIS NEEDS TO BE FINISHED AS IT NEEDS TO DEAL WITH
+     * DATA ARRAY TYPES AS WELL AS SIMPLE STRINGS, MAYBE THROUGH
+     * THE USE OF A SUBFUNCTION
+     */
+    static public function processTextForTags( $text, $cacheIndex=null )
+    {
+
+        $tags = array();
+
+        $remove = array( "\n", "\r", '"', "'", ',', '.', '!', ':', ';', '-', '/', '?', '<', '>', '=', '+', '(', ')', '[', ']', '{', '}' );
+
+        $text = strip_tags( $text );
+
+        $text = str_replace( $remove, ' ', $text );
+
+        $array = explode( ' ', $text );
+
+        foreach( $array as $word )
+        {
+
+            if( strlen( $word > 3 ) )
+            {
+
+                if( isset( $tags[ $word ] ) )
+                {
+                    $tags[ $word ]++;
+                }
+                else
+                {
+                    $tags[ $word ] = 1;
+                }
+
+            }
+
+        }
+
+        krsort( $tags, SORT_NUMERIC );
+
+    }
 	
 	static private function stories( $days )
 	{
