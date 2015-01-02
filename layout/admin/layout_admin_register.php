@@ -3,7 +3,13 @@
 class layout_admin_register extends layout_page
 {
 
-    function __construct( data_array $categories, data_array $bookmarks, data_statistics $footerStats, data_user $userData )
+    function __construct(
+        data_array $categories,
+        data_array $bookmarks,
+        data_statistics $footerStats,
+        data_user $userData,
+        data_array $tags
+    )
     {
 
         $this->title = 'User Registration - Co-Novelists';
@@ -14,7 +20,7 @@ class layout_admin_register extends layout_page
 		
 		$this->addChild( new layout_menu( $categories, $bookmarks ) );
 
-		$this->addChild( new layout_admin_register_body( $footerStats, $userData ) );	
+		$this->addChild( new layout_admin_register_body( $footerStats, $userData, $tags ) );
 
     }
 

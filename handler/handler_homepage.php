@@ -26,8 +26,10 @@ class handler_homepage extends handler
 		
 		$popular = model_chapter::getPopular();
 
+        $tags = model_statistics::tagsForHomepage( $stories );
+
         /* display data */
-		$page = new layout_homepage( $categories, $bookmarks, $footerStats, $stories, $popular );
+		$page = new layout_homepage( $categories, $bookmarks, $footerStats, $stories, $popular, $tags );
         $page->render();
 
     }

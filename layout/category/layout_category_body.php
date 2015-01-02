@@ -3,7 +3,7 @@
 class layout_category_body extends layout
 {
 
-	function __construct( data_category $category, data_array $stories, data_statistics $footerStats )
+	function __construct( data_category $category, data_array $stories, data_statistics $footerStats, data_array $tags )
 	{
 		
 		$this->addChild( new layout_main_navigation() );
@@ -12,7 +12,7 @@ class layout_category_body extends layout
 		
 		$this->addChild( new layout_category_content( $stories ) );
 		
-		$this->addChild( new layout_footer( $footerStats ) );
+		$this->addChild( new layout_footer( $footerStats, $tags ) );
 		
 	}
 	

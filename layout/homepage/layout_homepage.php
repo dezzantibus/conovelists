@@ -3,7 +3,14 @@
 class layout_homepage extends layout_page
 {
 
-    function __construct( data_array $categories, data_array $bookmarks, data_statistics $footerStats, data_array $stories, data_array $popular )
+    function __construct(
+        data_array      $categories,
+        data_array      $bookmarks,
+        data_statistics $footerStats,
+        data_array      $stories,
+        data_array      $popular,
+        data_array      $tags
+    )
     {
 
         $this->title = 'Homepage';
@@ -14,7 +21,7 @@ class layout_homepage extends layout_page
 		
 		$this->addChild( new layout_menu( $categories, $bookmarks ) );
 
-		$this->addChild( new layout_homepage_body( $footerStats, $stories, $popular ) );
+		$this->addChild( new layout_homepage_body( $footerStats, $stories, $popular, $tags ) );
 
     }
 

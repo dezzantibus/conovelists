@@ -22,10 +22,62 @@ class model_statistics extends model
 
     }
 
+    static public function tagsForHomepage( data_array $stories )
+    {
+
+        $tags = cache_statistics::retrieve( 'tagsHome' );
+
+        if( empty( $tags ) )
+        {
+
+            $text = '';
+
+            /** @var $story data_story */
+            foreach( $stories->getData() as $story )
+            {
+                $text .= ' ' . $story->brief;
+            }
+
+            $tags = self::processTextForTags( $text );
+
+            cache_statistics::save( 'tagsHome', $tags, constant::HOUR_IN_SECONDS );
+
+        }
+
+        return $tags;
+
+    }
+
+    static public function tagsForCategory( data_array $stories, $category_id )
+    {
+
+        $tags = cache_statistics::retrieve( 'tagsChapter-' . $category_id );
+
+        if( empty( $tags ) )
+        {
+
+            $text = '';
+
+            /** @var $story data_story */
+            foreach( $stories->getData() as $story )
+            {
+                $text .= ' ' . $story->brief;
+            }
+
+            $tags = self::processTextForTags( $text );
+
+            cache_statistics::save( 'tagsChapter-' . $category_id, $tags, constant::HOUR_IN_SECONDS );
+
+        }
+
+        return $tags;
+
+    }
+
     static public function tagsForChapter( data_chapter $chapter )
     {
 
-//        $tags = cache_statistics::retrieve( 'tagsChapter-' . $chapter->id );
+        $tags = cache_statistics::retrieve( 'tagsChapter-' . $chapter->id );
 
         if( empty( $tags ) )
         {

@@ -3,7 +3,14 @@
 class layout_category extends layout_page
 {
 
-    function __construct( data_category $category, data_array $stories, data_array $categories, data_array $bookmarks, data_statistics $footerStats  )
+    function __construct(
+        data_category   $category,
+        data_array      $stories,
+        data_array      $categories,
+        data_array      $bookmarks,
+        data_statistics $footerStats,
+        data_array      $tags
+    )
     {
 
         $this->title = $category->name;
@@ -12,7 +19,7 @@ class layout_category extends layout_page
 		
 		$this->addChild( new layout_menu( $categories, $bookmarks ) );
 
-		$this->addChild( new layout_category_body( $category, $stories, $footerStats ) );	
+		$this->addChild( new layout_category_body( $category, $stories, $footerStats, $tags ) );
 
     }
 

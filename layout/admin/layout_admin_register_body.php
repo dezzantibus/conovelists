@@ -3,7 +3,7 @@
 class layout_admin_register_body extends layout
 {
 
-	function __construct( data_statistics $footerStats, data_user $userData )
+	function __construct( data_statistics $footerStats, data_user $userData, data_array $tags )
 	{
 
 		$this->addChild( new layout_main_navigation() );
@@ -30,7 +30,7 @@ class layout_admin_register_body extends layout
 		$form->addChild( new layout_form_password( 'password', 		   'Password' ) );		
 		$form->addChild( new layout_form_password( 'confirm_password', 'Confirm Password' ) );
 						
-		$this->addChild( new layout_footer( $footerStats ) );
+		$this->addChild( new layout_footer( $footerStats, $tags ) );
 		
 	}
 	

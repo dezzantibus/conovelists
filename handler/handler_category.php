@@ -31,7 +31,9 @@ class handler_category extends handler
 			$bookmarks = new data_array();
 		}
 
-        $page = new layout_category( $category, $stories, $categories, $bookmarks, $footerStats );
+        $tags = model_statistics::tagsForCategory( $stories, $category->id );
+
+        $page = new layout_category( $category, $stories, $categories, $bookmarks, $footerStats, $tags );
         $page->render();
 
     }
