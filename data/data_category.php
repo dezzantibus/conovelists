@@ -3,8 +3,6 @@
 class data_category extends data
 {
 
-    const STORIES_PER_PAGE = 10;
-
     public $id;
 
     public $name;

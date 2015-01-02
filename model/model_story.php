@@ -62,6 +62,7 @@ class model_story extends model
 
         if( $success )
         {
+            cache_story::clear( $story->id );
             return self::getById( $story->id );
         }
         else
@@ -143,7 +144,7 @@ class model_story extends model
 
     }
 
-    public static function getLatest( $number=data_category::STORIES_PER_PAGE )
+    public static function getLatest( $number=constant::STORIES_PER_PAGE )
     {
 
         $result = cache_story::retrieve( 'latest' );
@@ -173,12 +174,58 @@ class model_story extends model
                 $result->add( $item );
             }
 
-            cache_story::save( 'latest', $result, 300 );
+            cache_story::save( 'latest', $result, self::cacheTime() );
 
         }
 
         return $result;
 
+    }
+
+    public static function getRecentlyUpdated( $number=constant::STORIES_RECENTLY_UPDATED )
+    {
+
+        $result = cache_story::retrieve( 'recentlyUpdated' );
+
+        if( empty( $result ) )
+        {
+
+            $sql = '
+                SELECT s.id, s.category_id, s.first_chapter_id, s.title, s.brief,
+                    s.created, MAX( c.id ) as chapter_id
+                FROM `story` s
+                    INNER JOIN `chapter` c
+                GROUP BY s.id
+                ORDER BY chapter_id DESC
+                LIMIT :number
+            ';
+
+            $query = db::prepare( $sql );
+            $query
+                ->bindInt( ':number', $number )
+                ->execute();
+
+            $result = new data_array();
+
+            while( $row = $query->fetch() )
+            {
+                $item           = new data_story( $row );
+                $item->user     = model_user::getByChapterId( $row['chapter_id'] );
+                $item->category = model_category::getById( $item->category_id );
+                $result->add( $item );
+            }
+
+            cache_story::save( 'recentlyUpdated', $result, self::cacheTime() );
+
+        }
+
+        return $result;
+
+    }
+
+    private static function cacheTime()
+    {
+        return rand( 300, 1200 );
     }
 
 }

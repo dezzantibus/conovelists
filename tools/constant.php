@@ -9,4 +9,8 @@ class constant
 
     const WEEK_IN_SECONDS = 604800;
 
+    const STORIES_PER_PAGE = 10;
+
+    const STORIES_RECENTLY_UPDATED = 3;
+
 }
