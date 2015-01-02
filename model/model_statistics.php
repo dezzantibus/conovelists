@@ -22,12 +22,27 @@ class model_statistics extends model
 
     }
 
-    /**
-     * @TODO THIS NEEDS TO BE FINISHED AS IT NEEDS TO DEAL WITH
-     * DATA ARRAY TYPES AS WELL AS SIMPLE STRINGS, MAYBE THROUGH
-     * THE USE OF A SUBFUNCTION
-     */
-    static public function processTextForTags( $text, $cacheIndex=null )
+    static public function tagsForChapter( data_chapter $chapter )
+    {
+
+//        $tags = cache_statistics::retrieve( 'tagsChapter-' . $chapter->id );
+
+        if( empty( $tags ) )
+        {
+
+            $text = $chapter->body . ' ' . $chapter->story->brief . ' ' . $chapter->title;
+
+            $tags = self::processTextForTags( $text );
+
+            cache_statistics::save( 'tagsChapter-' . $chapter->id, $tags, constant::WEEK_IN_SECONDS );
+
+        }
+
+        return $tags;
+
+    }
+
+    static private function processTextForTags( $text )
     {
 
         $tags = array();
@@ -43,7 +58,7 @@ class model_statistics extends model
         foreach( $array as $word )
         {
 
-            if( strlen( $word > 3 ) )
+            if( strlen( $word ) > 3 )
             {
 
                 if( isset( $tags[ $word ] ) )
@@ -59,7 +74,9 @@ class model_statistics extends model
 
         }
 
-        krsort( $tags, SORT_NUMERIC );
+        arsort( $tags, SORT_NUMERIC );
+
+        return new data_array( array_slice( $tags, 0, 10 ) );
 
     }
 	

@@ -125,7 +125,7 @@ class model_chapter extends model
 
             foreach( $ids->getData() as $item )
             {
-                $result->add( self::getById( $item['chapter_id'], true ) );
+                $result->add( self::getById( $item->chapter_id, true ) );
             }
 
             cache_chapter::save( 'popular-' .$days . '-' . $number, $result, 600 );

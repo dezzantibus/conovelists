@@ -69,4 +69,14 @@ class data_chapter extends data
 
     }
 
+    public function getDate()
+    {
+        if( empty( $this->created ) )
+        {
+            return null;
+        }
+
+        return $this->dateForDisplay( $this->created );
+    }
+
 }

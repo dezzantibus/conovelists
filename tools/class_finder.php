@@ -11,6 +11,7 @@ class class_finder
         switch( $frags[0] )
         {
             case 'adwords':  require_once __DIR__ . '/adwords.php';  break;
+            case 'constant': require_once __DIR__ . '/constant.php'; break;
             case 'message':  require_once __DIR__ . '/message.php';  break;
             case 'router':   require_once __DIR__ . '/router.php';   break;
             case 'security': require_once __DIR__ . '/security.php'; break;
@@ -30,8 +31,9 @@ class class_finder
 			switch( $frags[1] )
 			{
 				case 'homepage': require_once __DIR__ . '/../layout/homepage/' . $name . '.php'; break;
-				case 'category': require_once __DIR__ . '/../layout/category/' . $name . '.php'; break;
-				case 'new':      require_once __DIR__ . '/../layout/new/' . $name . '.php';     break;
+                case 'story':    require_once __DIR__ . '/../layout/story/' . $name . '.php';    break;
+                case 'category': require_once __DIR__ . '/../layout/category/' . $name . '.php'; break;
+				case 'new':      require_once __DIR__ . '/../layout/new/' . $name . '.php';      break;
 				case 'base':     require_once __DIR__ . '/../layout/base/' . $name . '.php';     break;
 				case 'form':     require_once __DIR__ . '/../layout/form/' . $name . '.php';     break;
 				case 'about':    require_once __DIR__ . '/../layout/about/' . $name . '.php';    break;

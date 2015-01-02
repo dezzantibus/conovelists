@@ -8,7 +8,8 @@ class layout_story_body extends layout
 		data_chapter    $chapter, 
 		data_array      $popular, 
 		data_array      $branches, 
-		data_array      $comments 
+		data_array      $comments,
+        data_array      $tags
 	)
 	{
 		
@@ -22,7 +23,7 @@ class layout_story_body extends layout
 		
 		$this->addChild( new layout_story_content( $chapter, $popular, $branches, $comments ) );
 		
-		$this->addChild( new layout_footer( $footerStats ) );
+		$this->addChild( new layout_footer( $footerStats, $tags ) );
 		
 	}
 	

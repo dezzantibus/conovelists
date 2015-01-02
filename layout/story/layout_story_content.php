@@ -28,7 +28,7 @@ class layout_story_content extends layout
 		
 	}
 	
-	protected function render()
+	public function render()
     {
 		
 		echo 
@@ -58,7 +58,7 @@ class layout_story_content extends layout
 		
 		echo
 		'<div class="post-date">',
-			$this->chapter->dateForDisplay( $this->chapter->created ), ' | <a href="">', $this->chapter->user->username ,'</a> <!--span><a href="">11 Comments</a></span-->',
+			$this->chapter->getDate(), ' | <a href="">', $this->chapter->user->username ,'</a> <!--span><a href="">11 Comments</a></span-->',
 		'</div>',
 		'<h1>', $this->chapter->title, '</h1>';
 		
@@ -70,8 +70,10 @@ class layout_story_content extends layout
 		else
 		{
 			echo
-			'<h4>A chapter of:', $this->chapter->story->title, '</h4>';
+			'<h4>A chapter of: ', $this->chapter->story->title, '</h4>';
 		}
+
+        echo $this->chapter->body;
 
 		$link = $this->chapter->getLink();
 

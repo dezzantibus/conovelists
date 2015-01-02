@@ -8,7 +8,7 @@
 	RewriteRule ^new/(.*).html$ index.php?handler=handler_new_$1 [QSA,L]
 	RewriteRule ^action/(.*)/(.*).html$ index.php?handler=action_$1_$2 [QSA,L]
 	RewriteRule ^action/(.*).html$ index.php?handler=action_$1 [QSA,L]
-	RewriteRule ^(0-9a-z)-(0-9a-z)/(.*)/(.*)/(.*).html$ index.php?handler=handler_story&story_id=$1&chapter_id=$2 [QSA,L]
-	RewriteRule ^(0-9a-z)/(.*)/(.*).html$ index.php?handler=handler_story&story_id=$3 [QSA,L]
+	RewriteRule ^(.*)-(.*)/(.*)/(.*)/(.*).html$ index.php?handler=handler_story&story_id=$1&chapter_id=$2 [QSA,L]
+	RewriteRule ^(.*)/(.*)/(.*).html$ index.php?handler=handler_story&story_id=$1 [QSA,L]
 	RewriteRule ^(.*).html$ index.php?handler=handler_category&route=$1 [QSA,L]
 </IfModule>

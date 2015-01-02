@@ -3,7 +3,7 @@
 class model_bookmark extends model
 {
 
-    static function create( data_bookmark $user )
+    static function create( data_bookmark $bookmark )
     {
 
 

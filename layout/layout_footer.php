@@ -6,9 +6,13 @@ class layout_footer extends layout
 	/** @var $statistics data_statistics */
 	private $statistics;
 
-	function __construct( data_statistics $statistics )
+    /** @var $tags data_array */
+    private $tags;
+
+	function __construct( data_statistics $statistics, data_array $tags )
 	{
 		$this->statistics = $statistics;
+        $this->tags       = $tags;
 	}
 	
 	public function render()
@@ -115,15 +119,15 @@ class layout_footer extends layout
 		echo
 		'<div class="col-sm-4 col-md-4 footer-widget clearfix">',
 			'<h3>Tags</h3>',
-			'<ul class="tags">',
-				'<li><a href="#">OpenPGP</a></li>',
-				'<li><a href="#">Django</a></li>',
-				'<li><a href="#">Bitcoin</a></li>',
-				'<li><a href="#">Security</a></li>',
-				'<li><a href="#">GNU/Linux</a></li>',
-				'<li><a href="#">Git</a></li>',
-				'<li><a href="#">Homebrew</a></li>',
-				'<li><a href="#">Debian</a></li> ',                           
+			'<ul class="tags">';
+
+                foreach( $this->tags->getData() as $tag => $number )
+                {
+                    echo
+                    '<li><a href="#" data-number"', $number, '">', $tag, '</a></li>';
+                }
+
+            echo
 			'</ul>',
 		'</div>';
 

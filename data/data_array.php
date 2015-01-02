@@ -5,9 +5,16 @@ class data_array extends data
 
     private $array;
 
-    function __construct()
+    function __construct( $data=null )
     {
+
         $this->clear();
+
+        if( is_array( $data ) )
+        {
+            $this->array = $data;
+        }
+
     }
 
     public function count()

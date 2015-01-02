@@ -27,7 +27,7 @@ class handler_story extends handler
 			}
 		}
 		
-		$chapter->user = model_user::geyById( $chapter->user_id );
+		$chapter->user = model_user::getById( $chapter->user_id );
 		
 		if( $_SESSION['user'] instanceof data_user )
 		{
@@ -46,10 +46,12 @@ class handler_story extends handler
 		
 		$branches = model_chapter::getBranches( $chapter_id );		
 
-		$comments = model_comment::getForChapterId( $chapter_id );		
+		$comments = model_comment::getForChapterId( $chapter_id );
+
+        $tags = model_statistics::tagsForChapter( $chapter );
 
         /* display data */
-	    $page = new layout_story( $categories, $bookmarks, $footerStats, $chapter, $popular, $branches, $comments );
+	    $page = new layout_story( $categories, $bookmarks, $footerStats, $chapter, $popular, $branches, $comments, $tags );
         $page->render();
 
     }
