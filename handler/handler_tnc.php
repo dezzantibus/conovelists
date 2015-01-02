@@ -24,8 +24,22 @@ class handler_tnc extends handler
 
         $popular = model_chapter::getPopular();
 
+        $tags = array(
+            'user'        => 1,
+            'register'    => 1,
+            'sign up'     => 1,
+            'form'        => 1,
+            'record'      => 1,
+            'enter'       => 1,
+            'participate' => 1,
+            'join'        => 1,
+            'apply'       => 1,
+            'submit'      => 1,
+        );
+        $tags = new data_array( $tags );
+
         /* display data */
-		$page = new layout_tnc( $categories, $bookmarks, $footerStats, $popular );
+		$page = new layout_tnc( $categories, $bookmarks, $footerStats, $popular, $tags );
         $page->render();
 
     }

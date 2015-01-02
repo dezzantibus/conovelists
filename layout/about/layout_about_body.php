@@ -3,7 +3,7 @@
 class layout_about_body extends layout
 {
 
-	function __construct( data_statistics $footerStats, data_array $popular )
+	function __construct( data_statistics $footerStats, data_array $popular, data_array $tags )
 	{
 		
 		$this->addChild( new layout_main_navigation() );
@@ -12,7 +12,7 @@ class layout_about_body extends layout
 		
 		$this->addChild( new layout_about_content( $popular ) );
 		
-		$this->addChild( new layout_footer( $footerStats ) );
+		$this->addChild( new layout_footer( $footerStats, $tags ) );
 		
 	}
 	

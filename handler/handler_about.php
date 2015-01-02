@@ -24,8 +24,22 @@ class handler_about extends handler
 
         $popular = model_chapter::getPopular();
 
+        $tags = array(
+            'conovelists'   => 1,
+            'about'         => 1,
+            'committed'     => 1,
+            'stories'       => 1,
+            'chapters'      => 1,
+            'authors'       => 1,
+            'participate'   => 1,
+            'literature'    => 1,
+            'interaction'   => 1,
+            'collaboration' => 1,
+        );
+        $tags = new data_array( $tags );
+
         /* display data */
-		$page = new layout_about( $categories, $bookmarks, $footerStats, $popular );
+		$page = new layout_about( $categories, $bookmarks, $footerStats, $popular, $tags );
         $page->render();
 
     }

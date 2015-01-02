@@ -24,8 +24,22 @@ class handler_faq extends handler
 
         $popular = model_chapter::getPopular();
 
+        $tags = array(
+            'FAQ'         => 1,
+            'questions'   => 1,
+            'stories'     => 1,
+            'answers'     => 1,
+            'frequent'    => 1,
+            'conovelists' => 1,
+            'asking'      => 1,
+            'literature'  => 1,
+            'context'     => 1,
+            'listed'      => 1,
+        );
+        $tags = new data_array( $tags );
+
         /* display data */
-		$page = new layout_faq( $categories, $bookmarks, $footerStats, $popular );
+		$page = new layout_faq( $categories, $bookmarks, $footerStats, $popular, $tags );
         $page->render();
 
     }

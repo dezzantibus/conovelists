@@ -35,7 +35,6 @@ class handler_admin_register extends handler
             'join'        => 1,
             'apply'       => 1,
             'submit'      => 1,
-
         );
         $tags = new data_array( $tags );
 
