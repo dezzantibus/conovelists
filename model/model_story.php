@@ -109,7 +109,7 @@ class model_story extends model
         if( empty( $result ) )
         {
 
-            $offset = ( $page - 1 ) * data_category::STORIES_PER_PAGE;
+            $offset = ( $page - 1 ) * constant::STORIES_PER_PAGE;
 
             $sql = '
                 SELECT *
@@ -122,7 +122,7 @@ class model_story extends model
             $query
                 ->bindInt( ':category_id', $category_id )
                 ->bindInt( ':offset',      $offset )
-                ->bindInt( ':items',       data_category::STORIES_PER_PAGE )
+                ->bindInt( ':items',       constant::STORIES_PER_PAGE )
 				->execute();
 
             $result = new data_array();
