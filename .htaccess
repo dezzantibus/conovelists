@@ -5,6 +5,7 @@
 	RewriteRule ^terms-and-conditions.html$ index.php?handler=handler_tnc [QSA,L]
 	RewriteRule ^contacts.html$ index.php?handler=handler_contacts [QSA,L]
 	RewriteRule ^admin/(.*).html$ index.php?handler=handler_admin_$1 [QSA,L]
+	RewriteRule ^profile/(.*).html$ index.php?handler=handler_user_profile&id=$1 [QSA,L]
 	RewriteRule ^new/(.*).html$ index.php?handler=handler_new_$1 [QSA,L]
 	RewriteRule ^action/(.*)/(.*).html$ index.php?handler=action_$1_$2 [QSA,L]
 	RewriteRule ^action/(.*).html$ index.php?handler=action_$1 [QSA,L]

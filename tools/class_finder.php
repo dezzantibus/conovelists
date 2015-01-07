@@ -58,9 +58,10 @@ class class_finder
 		{ 
 			switch( $frags[1] )
 			{
-				case 'admin':  require_once __DIR__ . '/../handler/admin/' . $name . '.php'; break;
-				case 'new':    require_once __DIR__ . '/../handler/new/' . $name . '.php';   break;
-				default:       require_once __DIR__ . '/../handler/' . $name . '.php';
+                case 'user':  require_once __DIR__ . '/../handler/user/' . $name . '.php'; break;
+                case 'admin': require_once __DIR__ . '/../handler/admin/' . $name . '.php'; break;
+				case 'new':   require_once __DIR__ . '/../handler/new/' . $name . '.php';   break;
+				default:      require_once __DIR__ . '/../handler/' . $name . '.php';
 			}
 		}
 		else
