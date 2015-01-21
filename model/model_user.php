@@ -58,29 +58,41 @@ class model_user extends model
 
     public static function getById( $id )
     {
+        return self::getByField( $id, 'id' );
+    }
 
-        $row = cache_user::retrieve( $id );
+    public static function getByUsername( $username )
+    {
+        return self::getByField( $username, 'username' );
+    }
+
+    private static function getByField( $value, $field )
+    {
+
+        $row = cache_user::retrieve( $field . '-' . $value );
 
         if( empty( $row ) )
         {
 
-            $sql = 'SELECT * FROM `user` where id = :id';
+            $sql = 'SELECT * FROM `user` where ' . $field . ' = :value';
 
             $query = db::prepare( $sql );
             $query
-				->bindInt( ':id', $id )
-				->execute();
+                ->bindInt( ':value', $value )
+                ->execute();
 
             $row = $query->fetch();
 
-            cache_user::save( $id, $row, 0 );
+            cache_user::save( $field . '-' . $value, $row, 0 );
 
         }
 
         return new data_user( $row );
     }
-	
-	public static function login( $email, $pass )
+
+
+
+    public static function login( $email, $pass )
 	{
 		
 		$sql = '
