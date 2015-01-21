@@ -40,8 +40,9 @@ class class_finder
                 case 'contacts': require_once __DIR__ . '/../layout/contacts/' . $name . '.php'; break;
 				case 'faq':      require_once __DIR__ . '/../layout/faq/' . $name . '.php';      break;
 				case 'admin':    require_once __DIR__ . '/../layout/admin/' . $name . '.php';    break;
-				case 'tnc':      require_once __DIR__ . '/../layout/tnc/' . $name . '.php';      break;
-				default:         require_once __DIR__ . '/../layout/' . $name . '.php';
+                case 'tnc':      require_once __DIR__ . '/../layout/tnc/' . $name . '.php';      break;
+                case 'profile':  require_once __DIR__ . '/../layout/profile/' . $name . '.php';  break;
+                default:         require_once __DIR__ . '/../layout/' . $name . '.php';
 			}
 		}
 		else

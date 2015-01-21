@@ -13,11 +13,11 @@ class handler_user_profile extends handler
          * if the user isn't logged in
          * take to registration form
          */
-        $profile = array();
+        $profile = new data_profile();
         if( isset( $this->data['nick'] ) )
         {
-            $profile['user'] = model_user::getByUsername( $this->data['nick'] );
-            if( empty( $profile['user']->id ) )
+            $profile->user = model_user::getByUsername( $this->data['nick'] );
+            if( empty( $profile->user->id ) )
             {
                 $this->data['nick'] = null;
             }
@@ -27,7 +27,7 @@ class handler_user_profile extends handler
         {
             if( $_SESSION['user'] instanceof data_user )
             {
-                $profile['user'] = $_SESSION['user'];
+                $profile->user = $_SESSION['user'];
             }
             else
             {
@@ -55,9 +55,9 @@ class handler_user_profile extends handler
 
         $tags = array(
             'User profile'               => 1,
-            $profile['user']->first_name => 1,
-            $profile['user']->last_name  => 1,
-            $profile['user']->username   => 1,
+            $profile->user->first_name   => 1,
+            $profile->user->last_name    => 1,
+            $profile->user->username     => 1,
             'writer'                     => 1,
             'conovelists'                => 1,
             'personal'                   => 1,
