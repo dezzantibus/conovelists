@@ -37,6 +37,9 @@ class handler_user_profile extends handler
             }
         }
 
+        $profile->latest = model_chapter::getLatestByUserId( $profile->user->id );
+        $profile->viewed = model_chapter::getPopularByUserId( $profile->user->id );
+
         /* get data from the models */
         $categories = model_category::getList();
 
@@ -54,16 +57,16 @@ class handler_user_profile extends handler
 		}
 
         $tags = array(
-            'User profile'               => 1,
-            $profile->user->first_name   => 1,
-            $profile->user->last_name    => 1,
-            $profile->user->username     => 1,
-            'writer'                     => 1,
-            'conovelists'                => 1,
-            'personal'                   => 1,
-            'literature'                 => 1,
-            'novelist'                   => 1,
-            'listed'                     => 1,
+            'User profile'             => 1,
+            $profile->user->first_name => 1,
+            $profile->user->last_name  => 1,
+            $profile->user->username   => 1,
+            'writer'                   => 1,
+            'conovelists'              => 1,
+            'personal'                 => 1,
+            'chapters'                 => 1,
+            'novelist'                 => 1,
+            'owner'                    => 1,
         );
         $tags = new data_array( $tags );
 

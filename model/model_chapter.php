@@ -162,6 +162,65 @@ class model_chapter extends model
 		
 	}
 
+    public static function getLatestByUserId( $user_id, $limit=5 )
+    {
+
+        $sql = '
+			SELECT *
+			FROM `chapter`
+			WHERE user_id = :user_id
+			ORDER BY created DESC
+			LIMIT :limit
+		';
+
+        $query = db::prepare( $sql );
+        $query
+            ->bindInt( ':user_id', $user_id )
+            ->bindInt( ':limit',   $limit )
+            ->execute();
+
+        $result = new data_array();
+
+        while( $row = $query->fetch() )
+        {
+            $result->add( new data_chapter( $row ) );
+        }
+
+        return $result;
+
+    }
+
+    public static function getPopularByUserId( $user_id, $limit=3 )
+    {
+
+        $sql = '
+			SELECT c.*, COUNT( v.id ) AS `views`
+			FROM `chapter` c
+			    INNER JOIN `view` v
+			        ON v.chapter_id = c.id
+			WHERE c.user_id = :user_id
+			    AND v.created > NOW() - INTERVAL 1 MONTH
+			ORDER BY `views` DESC
+			LIMIT :limit
+		';
+
+        $query = db::prepare( $sql );
+        $query
+            ->bindInt( ':user_id', $user_id )
+            ->bindInt( ':limit',   $limit )
+            ->execute();
+
+        $result = new data_array();
+
+        while( $row = $query->fetch() )
+        {
+            $result->add( new data_chapter( $row ) );
+        }
+
+        return $result;
+
+    }
+
     private static function processBodyToSave( $text )
 	{
 		
