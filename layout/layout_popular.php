@@ -17,13 +17,14 @@ class layout_popular extends layout
 		'<div class="post-popular">',
 			'<div class="row hidden-xs">';
 			
-				foreach( $this->popular->getData() as $story )
+				/** @var $chapter data_chapter */
+                foreach( $this->popular->getData() as $chapter )
 				{
 					echo
 					'<div class="col-sm-4 col-md-4">',
-						'<a href="post-video.html"><img src="img/img2.jpg" class="img-responsive" alt="img2"></a>',
-						'<h4 class="text-center"><a href="post-video.html">But I\'ve never been to the moon!</a></h4>',
-						'<p class="post-date text-center">MAY 10, 2014</p>',
+						'<a href="' . $chapter->getLink() . '"><img src="img/img2.jpg" class="img-responsive" alt="img2"></a>',
+						'<h4 class="text-center"><a href="' . $chapter->getLink() . '">' . $chapter->title . '</a></h4>',
+						'<p class="post-date text-center">' . $chapter->getDate() . '</p>',
 					'</div>';
 				}
 		
@@ -31,15 +32,16 @@ class layout_popular extends layout
 			'</div>',
 			'<div class="row visible-xs">',
 				'<div class="col-sm-12">';
-				
-					foreach( $this->popular->getData() as $story )
+
+                    /** @var $chapter data_chapter */
+					foreach( $this->popular->getData() as $chapter )
 					{
 						echo
 						'<div class="media">',
-							'<a class="pull-left" href="post-video.html"><img class="media-object" src="img/img2.jpg" width="100" alt=""></a>',
+							'<a class="pull-left" href="' . $chapter->getLink() . '"><img class="media-object" src="img/img2.jpg" width="100" alt=""></a>',
 							'<div class="media-body">',
-								'<h4 class="media-heading"><a href="post-video.html">But I\'ve never been to the moon!</a></h4>',
-								'<p class="post-date">may 10, 2014</p>',
+								'<h4 class="media-heading"><a href="' . $chapter->getLink() . '">' . $chapter->title . '</a></h4>',
+								'<p class="post-date">' . $chapter->getDate() . '</p>',
 							'</div>',
 						'</div>';
 					}
