@@ -29,6 +29,14 @@ class data_user extends data
 
     public $created;
 
+    public $avatar;
+
+    public $facebook;
+
+    public $twitter;
+
+    public $google;
+
     public function __construct( $data=null )
     {
 
@@ -44,6 +52,10 @@ class data_user extends data
             if( isset( $data['gender'] ) )        $this->gender        = $data['gender'];
             if( isset( $data['catchphrase'] ) )   $this->catchphrase   = $data['catchphrase'];
             if( isset( $data['created'] ) )       $this->created       = $data['created'];
+            if( isset( $data['avatar'] ) )        $this->avatar        = $data['avatar'];
+            if( isset( $data['facebook'] ) )      $this->facebook      = $data['facebook'];
+            if( isset( $data['twitter'] ) )       $this->twitter       = $data['twitter'];
+            if( isset( $data['google'] ) )        $this->google        = $data['google'];
         }
 
     }
