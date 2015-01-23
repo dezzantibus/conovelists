@@ -6,13 +6,6 @@ class handler_user_profile extends handler
     public function run()
     {
 
-        /**
-         * if $GET['nick'] is empty then
-         * view the user's profile
-         *
-         * if the user isn't logged in
-         * take to registration form
-         */
         $profile = new data_profile();
         if( isset( $this->data['nick'] ) )
         {
@@ -25,12 +18,20 @@ class handler_user_profile extends handler
 
         if( !isset( $this->data['nick'] ) || empty( $this->data['nick'] ) )
         {
+            /**
+             * if $GET['nick'] is empty then
+             * view the user's profile
+             */
             if( $_SESSION['user'] instanceof data_user )
             {
                 $profile->user = $_SESSION['user'];
             }
             else
             {
+                /**
+                 * if the user isn't logged in
+                 * take to registration form
+                 */
                 $handler = new handler_admin_register();
                 $handler->run();
                 exit;

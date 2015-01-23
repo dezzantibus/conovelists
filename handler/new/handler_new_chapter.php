@@ -25,7 +25,9 @@ class handler_new_chapter extends handler
 
 		$chapterData = new data_chapter();
 
-        $page = new layout_new_chapter( $categories, $bookmarks, $footerStats, $_GET['story_id'], $_GET['parent_id'], $_GET['level'], $chapterData );
+        $tags = new data_array();
+
+        $page = new layout_new_chapter( $categories, $bookmarks, $footerStats, $_GET['story_id'], $_GET['parent_id'], $_GET['level'], $chapterData, $tags );
         $page->render();
 
     }

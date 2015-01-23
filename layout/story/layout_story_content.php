@@ -40,8 +40,6 @@ class layout_story_content extends layout
 				
 				$this->chapterAuthor();
 				
-				$this->popular->render();
-				
 				$this->chapterBranches();
 
 				$this->chapterComments();
@@ -132,7 +130,14 @@ class layout_story_content extends layout
 		}
 		
 		// @TODO add new branch link
-	
+        $link = '/new/chapter.html?story_id=' . $this->chapter->story_id . '&parent_id=' . $this->chapter->id . '&level=' . ( $this->chapter->level + 1 );
+        echo
+        '<div class="media-body">',
+            '<h4 class="media-heading"><a href="', $link, '">Add a new chapter</a></h4>',
+        '</div>';
+
+
+
 	}
 	
 	private function chapterComments()

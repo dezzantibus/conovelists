@@ -3,7 +3,14 @@
 class layout_new_chapter_body extends layout
 {
 
-	function __construct( data_statistics $footerStats, $story_id, $parent_id, $level, data_chapter $chapterData )
+	function __construct(
+        data_statistics $footerStats,
+                        $story_id,
+                        $parent_id,
+                        $level,
+        data_chapter $chapterData,
+        data_array   $tags
+    )
 	{
 
 		$this->addChild( new layout_main_navigation() );
@@ -28,7 +35,7 @@ class layout_new_chapter_body extends layout
 		
 		$form->addChild( new layout_form_textarea( 'body', 'Body', $chapterData->body, 15 ) );
 				
-		$this->addChild( new layout_footer( $footerStats ) );
+		$this->addChild( new layout_footer( $footerStats, $tags ) );
 		
 	}
 	
