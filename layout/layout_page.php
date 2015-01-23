@@ -25,7 +25,8 @@ abstract class layout_page extends layout
 					'<link rel="stylesheet" href="/css/style.css">',
 					'<link rel="stylesheet" href="/css/icons.css">',
 					'<link rel="stylesheet" href="/css/animate.min.css">',
-					'<link rel="stylesheet" href="/css/mine.css">',
+                    '<link rel="stylesheet" href="/css/mine.css">',
+                    '<link rel="stylesheet" href="/css/datepicker3.css">',
 					'<link rel="shortcut icon" href="/img/ico/32.png" sizes="32x32" type="image/png"/>',
 					'<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>',
 					'<link rel="apple-touch-icon-precomposed" href="/img/ico/60.png" type="image/png"/>',
@@ -36,6 +37,13 @@ abstract class layout_page extends layout
 						'<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>',
 						'<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>',
 					'<![endif]-->',
+                    '<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>',
+                    '<script type="text/javascript" src="/js/bootstrap.min.js"></script>',
+                    '<script type="text/javascript" src="/js/placeholders.min.js"></script>',
+                    '<script type="text/javascript" src="/js/wow.min.js"></script>',
+                    '<script type="text/javascript" src="/js/custom.js"></script>',
+                    '<script type="text/javascript" src="/js/bootstrap-datepicker.js"></script>',
+
 				'</head>',
 			
 				'<body id="', $this->page_id, '">';
@@ -50,11 +58,6 @@ abstract class layout_page extends layout
         }
 		
 		echo
-			'<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>',
-			'<script type="text/javascript" src="/js/bootstrap.min.js"></script>',
-			'<script type="text/javascript" src="/js/placeholders.min.js"></script>',
-			'<script type="text/javascript" src="/js/wow.min.js"></script>',
-			'<script type="text/javascript" src="/js/custom.js"></script>',
         '</body></html>';
     }
 	

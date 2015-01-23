@@ -87,4 +87,28 @@ class data_user extends data
         return '/upload/' . $this->avatar;
     }
 
+    public static function getGenderList()
+    {
+
+        $genders = new data_array();
+
+        $genders->add( array(
+            'value' => self::UNKNOWN,
+            'label' => 'Undefined',
+        ) );
+
+        $genders->add( array(
+            'value' => self::MALE,
+            'label' => 'Male',
+        ) );
+
+        $genders->add( array(
+            'value' => self::FEMALE,
+            'label' => 'Female',
+        ) );
+
+        return $genders;
+
+    }
+
 }
