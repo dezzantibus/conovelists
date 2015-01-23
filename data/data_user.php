@@ -72,4 +72,19 @@ class data_user extends data
         }
     }
 
+    public function getAvatar()
+    {
+        if( empty( $this->avatar ) )
+        {
+            switch( $this->gender )
+            {
+                case data_user::MALE:    return '/upload/default_m.png';
+                case data_user::FEMALE:  return '/upload/default_f.png';
+                case data_user::UNKNOWN: return '/upload/default_x.png';
+            }
+        }
+
+        return '/upload/' . $this->avatar;
+    }
+
 }
