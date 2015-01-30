@@ -8,7 +8,7 @@ class layout_admin_profile_body extends layout
 
 		$this->addChild( new layout_main_navigation() );
 		
-		$this->addChild( new layout_hero( 'User Registration', 'Join us!', 'register_header_bg' ) );
+		$this->addChild( new layout_hero( 'Profile update', 'What changed?', 'profile_header_bg' ) );
 		
 		$formText = new data_array();
 		
@@ -25,17 +25,17 @@ class layout_admin_profile_body extends layout
 			$formText
 		) );
 
-        $form->addChild( new layout_form_text	 ( 'first_name', 		   'First Name', $userData->first_name ) );
-        $form->addChild( new layout_form_text	 ( 'last_name',    		   'Last Name',   $userData->last_name ) );
-        $form->addChild( new layout_form_text	 ( 'email',    		   'E-Mail',   $userData->email ) );
-//        $form->addChild( new layout_form_calendar	 ( 'date_of_birth',    		   'Date of Birth',   $userData->date_of_birth ) );
-        $form->addChild( new layout_form_dropdown( 'gender', 'Gender', data_user::getGenderList(), $userData->gender ) );
+        $form->addChild( new layout_form_text	   ( 'first_name', 	  'First Name',      $userData->first_name ) );
+        $form->addChild( new layout_form_text	   ( 'last_name',     'Last Name',       $userData->last_name ) );
+        $form->addChild( new layout_form_text	   ( 'email',         'E-Mail',          $userData->email ) );
+        $form->addChild( new layout_form_datepicker( 'date_of_birth', 'Date of Birth',   $userData->date_of_birth ) );
+        $form->addChild( new layout_form_dropdown  ( 'gender',        'Gender',          data_user::getGenderList(), $userData->gender ) );
 
-        $form->addChild( new layout_form_text	 ( 'catchphrase',    		   'Catchphrase',   $userData->catchphrase ) );
-        $form->addChild( new layout_form_text	 ( 'facebook',    		   'Facebook',   $userData->facebook ) );
-        $form->addChild( new layout_form_text	 ( 'twitter',    		   'Twitter',   $userData->twitter ) );
-        $form->addChild( new layout_form_text	 ( 'google',    		   'Google+',   $userData->google ) );
-//        $form->addChild( new layout_form_file	 ( 'avatar',    		   'Avatar' ) );
+        $form->addChild( new layout_form_text( 'catchphrase', 'Catchphrase',   $userData->catchphrase ) );
+        $form->addChild( new layout_form_text( 'facebook',    'Facebook',   $userData->facebook ) );
+        $form->addChild( new layout_form_text( 'twitter',  	  'Twitter',   $userData->twitter ) );
+        $form->addChild( new layout_form_text( 'google',      'Google+',   $userData->google ) );
+        $form->addChild( new layout_form_file( 'avatar',      'Avatar' ) );
 
         $form->addChild( new layout_form_password( 'password', 		   'Password' ) );
 		$form->addChild( new layout_form_password( 'confirm_password', 'Confirm Password' ) );
