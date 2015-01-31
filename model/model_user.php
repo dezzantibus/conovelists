@@ -4,15 +4,15 @@ class model_user extends model
 {
 
     public static function create
-	(
-		$first_name, 
-		$last_name, 
-		$email, 
-		$username, 
-		$pass, 
-		$date_of_birth, 
-		$gender
-	)
+    (
+        $first_name,
+        $last_name,
+        $email,
+        $username,
+        $pass,
+        $date_of_birth,
+        $gender
+    )
     {
 
         $sql = '
@@ -44,6 +44,68 @@ class model_user extends model
         {
             $id = db::lastInsertId();
             return self::getById( $id );
+        }
+        else
+        {
+            message::addError(
+                'There has been an error, please try again. If the problem persists please contact support.',
+                var_export( $query->getErrors(), 1 )
+            );
+            return null;
+        }
+
+    }
+
+    public static function update( data_user $user )
+    {
+
+        $sql = '
+            UPDATE `user`
+            SET first_name    = :first_name,
+                last_name     = :last_name,
+                email         = :email,
+                date_of_birth = :date_of_birth,
+                gender        = :gender,
+                facebook      = :facebook,
+                twitter       = :twitter,
+                google        = :google
+            WHERE id = :id
+        ';
+
+        $query = db::prepare( $sql );
+        $query
+            ->bindString( ':first_name',    $user->first_name )
+            ->bindString( ':last_name',     $user->last_name )
+            ->bindString( ':email',         $user->email )
+            ->bindDate  ( ':date_of_birth', $user->username )
+            ->bindInt   ( ':gender',        $user->gender )
+            ->bindString( ':facebook',      $user->facebook )
+            ->bindString( ':twitter',       $user->twitter )
+            ->bindString( ':google',        $user->google )
+            ->bindInt   ( ':id',            $user->id );
+
+        $success = $query->execute();
+
+        if( !empty( $user->pass ) )
+        {
+            $sql = '
+                UPDATE `user`
+                SET pass = :pass
+                WHERE id = :id
+            ';
+
+            $query = db::prepare( $sql );
+            $query
+                ->bindString( ':pass', self::hashPassword( $user->pass ) )
+                ->bindInt   ( ':id',   $user->id );
+
+            $success = $success && $query->execute();
+
+        }
+
+        if( $success )
+        {
+            return self::getById( $user->id );
         }
         else
         {

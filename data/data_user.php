@@ -111,4 +111,36 @@ class data_user extends data
 
     }
 
+    public function uploadFolder()
+    {
+
+        $level1 = $this->id % 100;
+        if( $level1 < 10 )
+        {
+            $level1 = '0' . $level1;
+        }
+
+        $level2 = (int)( $this->id / 100 ) % 100;
+        if( $level2 < 10 )
+        {
+            $level2 = '0' . $level2;
+        }
+
+        $level3 = (int)( $this->id / 10000 ) % 100;
+        if( $level3 < 10 )
+        {
+            $level3 = '0' . $level3;
+        }
+
+        $dir = __DIR__ . '/../upload/' . $level1 . '/' . $level2 . '/' . $level3 . '/' . $this->id . '/';
+
+        if( !is_dir( $dir ) )
+        {
+            mkdir( $dir );
+        }
+
+        return $dir;
+
+    }
+
 }
