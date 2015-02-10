@@ -19,13 +19,27 @@ class layout_profile_hero extends layout
         '<section id="hero" class="light-typo">',
             '<div class="container welcome-content">',
                 '<div class="middle-text">',
-                    '<img class="bordered img-circle" alt="" src="img/author-sing.jpg" height="96" width="96">',
-                    '<h2><b>Melissa Sing</b></h2>',
-                    '<p>If rubbin\' frozen dirt in your crotch is wrong, hey I don\'t wanna be right.</p>',
-                    '<ul class="social-links outline-white">',
-                        '<li><a href="#link"><i class="icon-twitter"></i></a></li>',
-                        '<li><a href="#link"><i class="icon-facebook"></i></a></li>',
-                        '<li><a href="#link"><i class="icon-googleplus"></i></a></li>',
+                    '<img class="bordered img-circle" alt="" src="', $this->profile->user->avatar, '" height="96" width="96">',
+                    '<h2><b>', $this->profile->user->username,'</b></h2>',
+                    '<p>', $this->profile->user->catchphrase, '</p>',
+                    '<ul class="social-links outline-white">';
+
+                        if( !empty( $this->profile->user->twitter ) )
+                        {
+                            echo '<li><a href="http://twitter.com/', $this->profile->user->twitter,'"><i class="icon-twitter"></i></a></li>';
+                        }
+
+                        if( !empty( $this->profile->user->facebook ) )
+                        {
+                            echo '<li><a href="http://www.facebook.com/', $this->profile->user->facebook, '"><i class="icon-facebook"></i></a></li>';
+                        }
+
+                        if( !empty( $this->profile->user->google ) )
+                        {
+                            echo '<li><a href="https://plus.google.com/u/0/', $this->profile->user->google, '/about"><i class="icon-googleplus"></i></a></li>';
+                        }
+
+                    echo
                     '</ul>',
                 '</div>',
             '</div>',
