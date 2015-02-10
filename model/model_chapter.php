@@ -140,6 +140,8 @@ class model_chapter extends model
 
                 $chapter->story = model_story::getById( $chapter->story_id );
 
+                $chapter->story->category = model_category::getById( $chapter->story->category_id );
+
                 $chapter->user  = model_user::getById( $chapter->user_id );
 
                 $result->add( $chapter );

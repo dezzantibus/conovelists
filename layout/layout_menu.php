@@ -60,7 +60,7 @@ class layout_menu extends layout
 				{
 				
 					echo
-					'<li><a href="/admin/my-profile.html"><i class="icon-user"></i>My profile</a></li>',
+					'<li><a href="/profile.html"><i class="icon-user"></i>My profile</a></li>',
 					'<li class="submenu">',
 						'<a href="#"><i class="icon-bookmark"></i>Bookmarks<b class="caret"></b></a>',
 						'<ul class="submenu-list">';

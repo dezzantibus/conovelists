@@ -19,7 +19,7 @@ class layout_profile_hero extends layout
         '<section id="hero" class="light-typo">',
             '<div class="container welcome-content">',
                 '<div class="middle-text">',
-                    '<img class="bordered img-circle" alt="" src="', $this->profile->user->avatar, '" height="96" width="96">',
+                    '<img class="bordered img-circle" alt="" src="', $this->profile->user->getAvatar(), '" height="96" width="96">',
                     '<h2><b>', $this->profile->user->username,'</b></h2>',
                     '<p>', $this->profile->user->catchphrase, '</p>',
                     '<ul class="social-links outline-white">';
