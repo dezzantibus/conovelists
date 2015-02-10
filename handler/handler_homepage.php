@@ -26,8 +26,6 @@ class handler_homepage extends handler
 		
 		$popular = model_chapter::getPopular();
 
-        $latestChapters = model_chapter::getLatest();
-
         $tags = model_statistics::tagsForHomepage( $stories );
 
         /* display data */

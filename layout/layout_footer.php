@@ -86,7 +86,7 @@ class layout_footer extends layout
 					'<div class="col-sm-12">';
 
                         /** @var $chapter data_chapter */
-                        foreach( $this->statistics->chapters as $chapter )
+                        foreach( $this->statistics->latest->getData() as $chapter )
                         {
 
                             echo

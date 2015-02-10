@@ -50,7 +50,7 @@ class data_chapter extends data
 		
         $story = $this->clean_for_url( $this->story->title );
 
-		if( $ythis->level > 1 )
+		if( $this->level > 1 )
 		{
 			
 			$id = $this->encode_id( $this->id );

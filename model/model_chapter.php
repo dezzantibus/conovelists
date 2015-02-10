@@ -135,7 +135,14 @@ class model_chapter extends model
 
             while( $row = $query->fetch() )
             {
-                $result->add( new data_chapter( $row ) );
+
+                $chapter = new data_chapter( $row );
+
+                $chapter->story = model_story::getById( $chapter->story_id );
+
+                $chapter->user  = model_user::getById( $chapter->user_id );
+
+                $result->add( $chapter );
             }
 
             cache_chapter::save( 'latest' . $limit, $result, 3600 );

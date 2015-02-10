@@ -13,4 +13,6 @@ class data_statistics extends data
 	
 	public $categories;
 
+    public $latest;
+
 }

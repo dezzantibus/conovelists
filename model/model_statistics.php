@@ -17,6 +17,7 @@ class model_statistics extends model
 		$result->stories  = self::stories( $result->days );
 		$result->chapters = self::chapters( $result->days );
 		$result->users    = self::users( $result->days );
+        $result->latest   = model_chapter::getLatest();
 		
 		return $result;
 
