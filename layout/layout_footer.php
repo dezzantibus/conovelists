@@ -83,29 +83,24 @@ class layout_footer extends layout
 			'<h3>Recent posts</h3>',
 			'<div class="post-recent-widget">',
 				'<div class="row">',
-					'<div class="col-sm-12">',
-						'<div class="media">',
-							'<a class="pull-left" href="post-video.html"><img class="media-object" src="/img/img2.jpg" width="80" alt=""></a>',
-							'<div class="media-body">',
-								'<h4 class="media-heading"><a href="post-video.html">But I\'ve never been to the moon!</a></h4>',
-								'<p class="post-date">may 10, 2014</p>',
-							'</div>',
-						'</div>',
-						'<div class="media">',
-							'<a class="pull-left" href="post-typography.html"><img class="media-object" src="/img/img1.jpg" width="80" alt=""></a>',
-							'<div class="media-body">',
-								'<h4 class="media-heading"><a href="post-typography.html">We don\'t have a brig</a></h4>',
-								'<p class="post-date">september 27, 2014</p>',
-							'</div>',
-						'</div>',
-						'<div class="media">',
-							'<a class="pull-left" href="post-image.html"><img class="media-object" src="/img/img3.jpg" width="80" alt=""></a>',
-							'<div class="media-body">',
-								'<h4 class="media-heading"><a href="post-image.html">Every other day it\'s food, food, food.</a></h4>',
-								'<p class="post-date">april 2, 2014</p>',
-							'</div>',
-						'</div>',
-						
+					'<div class="col-sm-12">';
+
+                        /** @var $chapter data_chapter */
+                        foreach( $this->statistics->chapters as $chapter )
+                        {
+
+                            echo
+                            '<div class="media">',
+                                '<a class="pull-left" href="', $chapter->getLink(), '"><img class="media-object" src="', $chapter->user->avatar, '" width="80" alt=""></a>',
+                                '<div class="media-body">',
+                                    '<h4 class="media-heading"><a href="', $chapter->getLink(), '">', $chapter->title , '</a></h4>',
+                                    '<p class="post-date">', $chapter->getDate(), '</p>',
+                                '</div>',
+                            '</div>';
+
+                        }
+
+                    echo
 					'</div>',
 				'</div>',
 			'</div>',
