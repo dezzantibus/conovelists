@@ -111,6 +111,41 @@ class model_chapter extends model
 
     }
 
+    public static function getLatest( $limit=3 )
+    {
+
+        $result = cache_chapter::retrieve( 'latest' . $limit );
+
+        if( empty( $result ) )
+        {
+
+            $sql = '
+                SELECT id, parent_id, story_id, user_id, `level`, title, created
+                FROM `chapter`
+                ORDER BY created DESC
+                LIMIT :limit
+            ';
+
+            $query = db::prepare( $sql );
+            $query
+                ->bindInt( ':limit',   $limit )
+                ->execute();
+
+            $result = new data_array();
+
+            while( $row = $query->fetch() )
+            {
+                $result->add( new data_chapter( $row ) );
+            }
+
+            cache_chapter::save( 'latest' . $limit, $result, 3600 );
+
+        }
+
+        return $result;
+
+    }
+
     public static function getPopular( $number=3, $days=7 )
     {
 
