@@ -11,11 +11,11 @@ class layout_profile_content extends layout
 
             if( $profile->latest->isEmpty() )
             {
-                $this->addChild( new layout_story_cell( $story, true ) );
+                $this->addChild( new layout_story_chapter_cell( $story, true ) );
             }
             else
             {
-                $this->addChild( new layout_story_cell( $story ) );
+                $this->addChild( new layout_story_chapter_cell( $story ) );
             }
 
 		}
@@ -27,13 +27,9 @@ class layout_profile_content extends layout
 	protected function renderTop()
     {
 		echo 
-//		'<div class="archives container content">',
-//			'<div class="row">',
-//				'<div class="col-md-10 col-md-offset-1">';
         '<div id="start" class="container content">',
             '<div class="row">',
 					'<div class="col-md-10 col-md-offset-1">';
-
     }
 
     protected function renderBottom()

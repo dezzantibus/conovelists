@@ -25,6 +25,7 @@ class handler_user_profile extends handler
             if( $_SESSION['user'] instanceof data_user )
             {
                 $profile->user = $_SESSION['user'];
+                $_SESSION['self_profile'] = true;
             }
             else
             {

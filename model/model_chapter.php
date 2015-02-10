@@ -135,14 +135,7 @@ class model_chapter extends model
 
             while( $row = $query->fetch() )
             {
-
-                $chapter = new data_chapter( $row );
-
-                $chapter->story = model_story::getById( $chapter->story_id );
-
-                $chapter->story->category = model_category::getById( $chapter->story->category_id );
-
-                $chapter->user  = model_user::getById( $chapter->user_id );
+                $chapter = self::addExtraData( new data_chapter( $row ) );
 
                 $result->add( $chapter );
             }
@@ -209,25 +202,36 @@ class model_chapter extends model
     public static function getLatestByUserId( $user_id, $limit=5 )
     {
 
-        $sql = '
-			SELECT *
-			FROM `chapter`
-			WHERE user_id = :user_id
-			ORDER BY created DESC
-			LIMIT :limit
-		';
+        $result = cache_chapter::retrieve( 'getLatestByUserId-' . $user_id . '.' . $limit );
 
-        $query = db::prepare( $sql );
-        $query
-            ->bindInt( ':user_id', $user_id )
-            ->bindInt( ':limit',   $limit )
-            ->execute();
-
-        $result = new data_array();
-
-        while( $row = $query->fetch() )
+        if( empty( $result ) )
         {
-            $result->add( new data_chapter( $row ) );
+
+            $sql = '
+                SELECT *
+                FROM `chapter`
+                WHERE user_id = :user_id
+                ORDER BY created DESC
+                LIMIT :limit
+            ';
+
+            $query = db::prepare( $sql );
+            $query
+                ->bindInt( ':user_id', $user_id )
+                ->bindInt( ':limit',   $limit )
+                ->execute();
+
+            $result = new data_array();
+
+            while( $row = $query->fetch() )
+            {
+                $chapter = self::addExtraData( new data_chapter( $row ) );
+
+                $result->add( $chapter );
+            }
+
+            cache_chapter::save( 'getLatestByUserId-' . $user_id . '.' . $limit, $result, 3600 * 24 );
+
         }
 
         return $result;
@@ -279,5 +283,18 @@ class model_chapter extends model
 		return '<p>' . $text . '</p>';
 		
 	}
+
+    private static function addExtraData( data_chapter $chapter )
+    {
+
+        $chapter->story = model_story::getById( $chapter->story_id );
+
+        $chapter->story->category = model_category::getById( $chapter->story->category_id );
+
+        $chapter->user  = model_user::getById( $chapter->user_id );
+
+        return $chapter;
+
+    }
 
 }
