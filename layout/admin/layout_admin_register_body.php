@@ -20,7 +20,7 @@ class layout_admin_register_body extends layout
 			'/action/register.html', 
 			'form_register', 
 			'form_register', 
-			'/admin/my-profile.html',
+			'/profile.html',
 			'/admin/register.html',
 			$formText
 		) );
