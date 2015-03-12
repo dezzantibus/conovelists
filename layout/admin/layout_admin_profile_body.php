@@ -17,7 +17,7 @@ class layout_admin_profile_body extends layout
 		$formText->add( '<p>But it can wait \'till the functionality is there</p>' );
 		
 		$form = $this->addChild( new layout_form( 
-			'/action/profile.html',
+			'/action/admin_profile.html',
 			'form_profile',
 			'form_profile',
 			'/profile.html',

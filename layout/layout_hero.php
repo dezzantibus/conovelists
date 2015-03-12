@@ -15,12 +15,12 @@ class layout_hero extends layout
 		$this->h1 = $h1;
 		$this->h2 = $h2;
 		$this->bg = $bg;
-		
+
 	}
 	
 	public function render()
 	{
-		
+
 		echo
 		'<section id="hero" class="light-typo">',
 			'<div id="cover-image" class="', $this->bg , ' animated fadeIn"></div>',
